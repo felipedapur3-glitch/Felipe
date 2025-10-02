@@ -41,13 +41,13 @@
       padding:88px 0 72px;
     }
     .hero-logo{
-      width: clamp(180px, 32vw, 360px);
+      width: clamp(220px, 38vw, 480px); /* AGRANDADO */
       height:auto; display:block; margin:0 auto 24px;
       filter: drop-shadow(0 6px 18px rgba(0,0,0,.35));
     }
     .hero h1{
       font-size: clamp(36px, 6vw, 64px);
-      margin: 0 0 12px; color: var(--rojo);
+      margin: 0 0 12px; color: #fff;  /* CAMBIO: ahora blanco */
       letter-spacing: 1px; font-weight: 900;
     }
     .hero h2{
@@ -88,6 +88,24 @@
       width: min(100%, 820px);
       height:auto; display:block; margin:18px auto 0;
       border-radius:16px; box-shadow: 0 12px 28px rgba(0,0,0,.25);
+    }
+
+    /* PRECIO */
+    .precio{
+      background:var(--rojo); color:#fff; text-align:center;
+      padding:50px 20px;
+    }
+    .precio h2{
+      font-size: clamp(28px, 6vw, 48px);
+      margin:0 0 18px;
+    }
+    .precio p{
+      font-size: clamp(20px, 4.5vw, 36px);
+      font-weight:900;
+      background:#fff; color:var(--rojo);
+      display:inline-block; padding:12px 30px;
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,.25);
     }
 
     footer{
@@ -132,6 +150,14 @@
       <div style="margin-top:22px">
         <a href="#beneficios" class="cta-button">Ver más beneficios</a>
       </div>
+    </div>
+  </section>
+
+  <!-- PRECIO -->
+  <section class="precio">
+    <div class="contenedor">
+      <h2>Precio especial de lanzamiento</h2>
+      <p>$63.000</p>
     </div>
   </section>
 
