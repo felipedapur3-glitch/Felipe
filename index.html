@@ -1,97 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ergo Ride - Asiento Ergonómico y Confort</title>
   <style>
     :root{
-      --rojo-principal:#D90429;
-      --gris-oscuro:#2B2D42;
-      --blanco-fondo:#F5F5F5;
-      --gris-claro:#A0A0A0;
+      --bg-oscuro:#1c1f26;        
+      --texto:#ECEFF4;            
+      --texto-sec:#A8B0BD;        
+      --rojo:#E0263A;             
+      --rojo-hover:#B01E2D;
+      --panel:#232733;            
+      --panel-claro:#F7F8FA;      
+      --texto-osc:#2B2D42;        
     }
+
+    *{box-sizing:border-box}
     body{
-      font-family: Arial, sans-serif;
-      line-height:1.6; margin:0; padding:0;
-      background:var(--blanco-fondo); color:var(--gris-oscuro);
+      font-family: Arial, Helvetica, sans-serif;
+      margin:0; padding:0; line-height:1.6;
+      background:var(--bg-oscuro); color:var(--texto);
     }
-    .contenedor{max-width:900px; margin:0 auto; padding:0 20px;}
-    .seccion{padding:50px 0; text-align:center;}
-    h1,h2,h3{margin-bottom:15px;}
-    h2{color:var(--rojo-principal); font-size:1.8em;}
-    strong{color:var(--rojo-principal);}
+    .contenedor{max-width:1000px; margin:0 auto; padding:0 24px;}
+    .seccion{padding:56px 0; text-align:center;}
+
+    /* Botón */
     .cta-button{
-      display:inline-block; background:var(--rojo-principal); color:#fff;
-      padding:12px 30px; text-decoration:none; border-radius:5px; font-weight:bold;
-      text-transform:uppercase; margin-top:20px; transition:background-color .3s;
+      display:inline-block; background:var(--rojo); color:#fff;
+      padding:14px 28px; border-radius:10px; font-weight:700; letter-spacing:.3px;
+      text-decoration:none; text-transform:uppercase; transition:.2s ease;
+      box-shadow:0 10px 24px rgba(224,38,58,.25);
     }
-    .cta-button:hover{background:#A8001D;}
-    .hero{background:var(--gris-oscuro); color:#fff; padding:80px 0;}
-    .hero h1{font-size:3.5em; color:var(--rojo-principal); margin-bottom:5px;}
-    .hero p{font-style:italic; margin:0 auto 30px; max-width:600px; color:var(--gris-claro);}
-    .beneficios{background:#fff;}
-    .beneficios h2{margin-bottom:30px;}
-    .beneficios ul{list-style:none; padding:0; margin-top:30px;}
-    .beneficios li{
-      background:var(--blanco-fondo); border-left:5px solid var(--rojo-principal);
-      padding:15px 20px; margin-bottom:15px; text-align:left;
-      box-shadow:0 2px 5px rgba(0,0,0,.1); font-size:1.1em;
+    .cta-button:hover{background:var(--rojo-hover); transform:translateY(-1px)}
+
+    /* HERO */
+    .hero{
+      background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,0)),
+                 var(--bg-oscuro);
+      padding:88px 0 72px;
     }
-    footer{background:var(--gris-oscuro); color:#fff; padding:40px 0;}
-    footer h3{color:var(--blanco-fondo);}
-    /* Imagen moto estilo */
-    .imagen-moto {
-      max-width: 350px;
-      margin-bottom: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-      background: #fff;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+    .hero-logo{
+      width: clamp(180px, 32vw, 360px);
+      height:auto; display:block; margin:0 auto 24px;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,.35));
     }
+    .hero h1{
+      font-size: clamp(36px, 6vw, 64px);
+      margin: 0 0 12px; color: var(--rojo);
+      letter-spacing: 1px; font-weight: 900;
+    }
+    .hero h2{
+      font-size: clamp(18px, 3.6vw, 30px);
+      margin: 0 auto 18px; color: var(--texto);
+      max-width: 900px;
+    }
+    .hero p{
+      font-style: italic; color: var(--texto-sec);
+      margin: 0 auto 28px; max-width: 760px;
+    }
+
+    /* Beneficios (tarjetas) */
+    .beneficios{background: var(--panel);}
+    .beneficios h2{color:#fff; margin-bottom:28px}
+    .benef-list{
+      list-style:none; padding:0; margin:28px 0 0;
+      display:grid; gap:16px;
+    }
+    @media (min-width:720px){
+      .benef-list{grid-template-columns:1fr 1fr}
+    }
+    .benef-item{
+      text-align:left; background:#262B39; color:#E8ECF5;
+      border-left:6px solid var(--rojo); padding:18px 20px; border-radius:12px;
+      box-shadow:0 6px 16px rgba(0,0,0,.15);
+    }
+    .benef-item strong{color:#fff}
+
+    /* Sección Producto (imagen grande) */
+    .producto{
+      background: var(--panel-claro); color: var(--texto-osc);
+      text-align:center;
+    }
+    .producto h2{ color: var(--rojo); margin-bottom:10px }
+    .producto p{ color:#505665; margin:0 auto 22px; max-width:780px }
+    .producto-img{
+      width: min(100%, 820px);
+      height:auto; display:block; margin:18px auto 0;
+      border-radius:16px; box-shadow: 0 12px 28px rgba(0,0,0,.25);
+    }
+
+    footer{
+      background:#15181E; color:#CDD3DE; padding:42px 0; text-align:center;
+    }
+    footer h3{ color:#FFFFFF; margin: 0 0 8px }
+    footer p.note{font-size:.85em; color:#8F98A8; margin-top:18px}
   </style>
 </head>
 <body>
 
+  <!-- HERO con logo -->
   <header class="seccion hero">
     <div class="contenedor">
-      <img src="moto-ergo-ride.png.png" alt="Moto con asiento Ergo Ride" class="imagen-moto">
+      <img src="logo-ergoride.png" alt="Logo ErgoRide" class="hero-logo">
       <h1>ERGO RIDE</h1>
-      <h2>La Solución Definitiva para el <strong>Confort</strong> en tu Moto</h2>
-      <p>Palabras Clave: <strong>Ergonomía</strong>, <strong>Salud</strong>, <strong>Moto</strong>, <strong>Viaje Largo</strong>, <strong>Postura</strong>, <strong>Dolor Lumbar</strong>, <strong>Anti-Fatiga</strong></p>
-      <a href="#beneficios" class="cta-button">Descubre el Confort Ergo Ride</a>
+      <h2>La solución definitiva para el <strong>confort</strong> en tu moto</h2>
+      <p>Palabras clave: <em>Ergonomía, Salud, Moto, Viaje Largo, Postura, Dolor Lumbar, Anti-Fatiga</em>.</p>
+      <a href="#beneficios" class="cta-button">Descubre el confort Ergo Ride</a>
     </div>
   </header>
 
-  <section class="seccion">
-    <div class="contenedor">
-      <h2>¿Cansado del <strong>Dolor de Espalda</strong>?</h2>
-      <p>Los asientos convencionales te obligan a una mala <strong>postura</strong>, generando presión y <strong>fatiga</strong> en rutas largas.</p>
-      <h3>La <strong>Ergonomía</strong> de <strong>Ergo Ride</strong></h3>
-      <p>Diseñado con tecnología de punta para brindar <strong>soporte lumbar</strong> ideal, distribuyendo el peso correctamente y asegurando un <strong>viaje largo</strong> cómodo y saludable.</p>
-    </div>
-  </section>
-
+  <!-- BENEFICIOS -->
   <section id="beneficios" class="seccion beneficios">
     <div class="contenedor">
       <h2>Beneficios Clave</h2>
-      <ul>
-        <li><strong>Alivio Lumbar:</strong> Nuestro diseño corrige la <strong>postura</strong> y elimina los puntos de presión causantes del <strong>dolor de espalda</strong>.</li>
-        <li><strong>Tecnología Anti-Fatiga:</strong> Permanece fresco y cómodo. Ideal para la conducción diaria y los <strong>viajes largos</strong>.</li>
-        <li><strong>Instalación Sencilla:</strong> Montaje rápido, compatible con la mayoría de motocicletas de forma universal.</li>
-        <li><strong>Material de Alta Durabilidad:</strong> Inversión en <strong>calidad</strong> y <strong>resistencia</strong> para años de uso.</li>
+      <ul class="benef-list">
+        <li class="benef-item"><strong>Alivio lumbar:</strong> corrige la postura y elimina puntos de presión causantes del dolor de espalda.</li>
+        <li class="benef-item"><strong>Tecnología anti-fatiga:</strong> confort térmico y soporte estable en ciudad y rutas largas.</li>
+        <li class="benef-item"><strong>Instalación sencilla:</strong> montaje rápido, compatibilidad universal.</li>
+        <li class="benef-item"><strong>Material premium:</strong> calidad y resistencia para años de uso.</li>
       </ul>
     </div>
   </section>
 
+  <!-- PRODUCTO (foto grande) -->
+  <section class="seccion producto" id="producto">
+    <div class="contenedor">
+      <h2>ErgoRide en acción</h2>
+      <p>Diseñado para brindar <strong>soporte lumbar</strong> y una distribución de cargas equilibrada para viajes más cómodos y seguros.</p>
+      <img src="moto-ergo-ride.png.png" alt="Asiento ErgoRide instalado" class="producto-img">
+      <div style="margin-top:22px">
+        <a href="#beneficios" class="cta-button">Ver más beneficios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <div class="contenedor">
-      <h3>¡Invierte en tu <strong>Salud</strong> y <strong>Comodidad</strong>!</h3>
-      <p>No pospongas más el placer de conducir. Elige <strong>Ergo Ride</strong>.</p>
-      <a href="#" class="cta-button">¡Quiero mi Asiento Ergonómico!</a>
-      <p style="font-size:0.8em; margin-top:20px; color:var(--gris-claro);">&copy; 2024 Ergo Ride Project.</p>
+      <h3>¡Invertí en tu <strong>salud</strong> y <strong>comodidad</strong>!</h3>
+      <p>No pospongas más el placer de conducir. Elegí <strong>ErgoRide</strong>.</p>
+      <a href="#producto" class="cta-button">Quiero mi asiento ergonómico</a>
+      <p class="note">&copy; 2024 ErgoRide Project.</p>
     </div>
   </footer>
 
