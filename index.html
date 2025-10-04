@@ -2,10 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>ErgoRide – Confort ergonómico para tu moto</title>
 
-  <!-- SEO / Social (opcional) -->
   <meta name="description" content="ErgoRide: asiento ergonómico con soporte lumbar para motos. Menos fatiga, mejor postura y más confort.">
   <meta property="og:title" content="ErgoRide – Confort ergonómico para tu moto">
   <meta property="og:description" content="Soporte lumbar, menor fatiga y mejor postura.">
@@ -15,19 +14,19 @@
 
   <style>
     :root{
-      --bg:#0f1217;
-      --panel:#171b23;
-      --text:#eef2f7;
-      --muted:#aeb6c4;
-      --primary:#e02a3c;
-      --primary-2:#b32130;
-      --light:#f7f8fa;
+      --bg:#0f1217; --panel:#171b23; --text:#eef2f7; --muted:#aeb6c4;
+      --primary:#e02a3c; --primary-2:#b32130; --light:#f7f8fa;
+      --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+      --safe-left: env(safe-area-inset-left); --safe-right: env(safe-area-inset-right);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0; font-family: Arial, Helvetica, sans-serif;
       color:var(--text); background:var(--bg); line-height:1.6;
+      overflow-x:hidden; /* evita scroll lateral en mobile */
+      padding-left: max(0px, var(--safe-left));
+      padding-right: max(0px, var(--safe-right));
     }
     a{color:inherit}
     [id]{scroll-margin-top:84px;}
@@ -36,26 +35,36 @@
     .nav{
       position:sticky; top:0; z-index:50;
       display:flex; align-items:center; gap:24px;
-      padding:14px 20px; background:rgba(15,18,23,.6);
-      backdrop-filter: blur(8px);
+      padding:14px 20px; padding-top:calc(14px + var(--safe-top));
+      background:rgba(15,18,23,.6); backdrop-filter: blur(8px);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
     .nav .wrap{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;width:100%}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
     .brand img{height:40px; width:auto; display:block}
-    .navlinks{margin-left:auto; display:flex; gap:18px}
-    .navlinks a{padding:8px 10px; color:var(--muted); text-decoration:none}
+    .navlinks{margin-left:auto; display:flex; gap:18px; align-items:center}
+    .navlinks a{padding:8px 10px; color:var(--muted); text-decoration:none; white-space:nowrap}
     .navlinks a:hover{color:#fff}
     .btn-small{
       background:var(--primary); color:#fff; border-radius:10px;
       padding:8px 14px; text-decoration:none; font-weight:700;
     }
     .btn-small:hover{background:var(--primary-2)}
+    /* En mobile, simplificamos la nav: solo logo y botón */
+    @media (max-width: 540px){
+      .navlinks a[href^="#"]:not(.btn-small){display:none}
+      .nav{gap:12px}
+      .brand img{height:34px}
+    }
+
+    /* CONTAINERS */
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    @media (max-width:480px){ .container{padding:0 16px} }
 
     /* HERO */
     .hero{
-      position:relative; min-height:85vh; display:flex; align-items:center;
-      background:url('Imagen5.png') center 20%/cover no-repeat; /* encuadre alto */
+      position:relative; min-height:86svh; display:flex; align-items:center;
+      background:url('Imagen5.png') center 20%/cover no-repeat;
       isolation:isolate;
     }
     .hero::before{
@@ -64,12 +73,12 @@
       z-index:0;
     }
     .hero .content{position:relative; z-index:1; width:100%;}
-    .container{max-width:1200px;margin:0 auto;padding:0 24px}
     .kicker{font-weight:700; letter-spacing:.08em; color:#fff; opacity:.85}
     .hero h1{
       font-size: clamp(28px, 6vw, 54px);
-      margin:10px 0 6px; line-height:1.1;
+      margin:10px 0 6px; line-height:1.12;
       text-shadow:0 2px 14px rgba(0,0,0,.35);
+      max-width: 24ch;
     }
     .hero p{color:var(--light); max-width:760px; margin:12px 0 26px; opacity:.95}
     .cta-row{display:flex; gap:14px; flex-wrap:wrap}
@@ -81,13 +90,20 @@
     .btn.primary:hover{background:var(--primary-2)}
     .btn.secondary{background:#fff; color:#111}
     .btn.secondary:hover{filter:brightness(.95)}
+    /* Mobile tuning del hero */
+    @media (max-width:480px){
+      .hero{background-position: center 28%;}
+      .hero::before{background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.5));}
+      .kicker{font-size:.9rem}
+      .hero h1{font-size: clamp(24px, 7.2vw, 34px); line-height:1.15; margin-bottom:10px}
+      .hero p{font-size: .98rem; margin-bottom:18px}
+      .cta-row .btn{width:100%; text-align:center}
+    }
 
-    /* SECCIONES GENERALES */
+    /* SECCIONES */
     .section{padding:64px 0}
     .section.dark{background:var(--panel)}
-    h2.section-title{
-      text-align:center; margin:0 0 12px; font-size:clamp(22px,4.2vw,34px)
-    }
+    h2.section-title{text-align:center; margin:0 0 12px; font-size:clamp(22px,4.2vw,34px)}
     .section .lead{color:var(--muted); text-align:center; margin:0 auto 28px; max-width:800px}
 
     .grid{display:grid; gap:16px}
@@ -95,9 +111,8 @@
     .card{
       background:#1b202a; border:1px solid rgba(255,255,255,.06);
       border-left:6px solid var(--primary);
-      padding:18px 18px; border-radius:14px; color:#e8ecf5;
-      box-shadow:0 8px 22px rgba(0,0,0,.18);
-      text-align:left;
+      padding:18px; border-radius:14px; color:#e8ecf5;
+      box-shadow:0 8px 22px rgba(0,0,0,.18); text-align:left;
     }
     .card strong{color:#fff}
 
@@ -109,54 +124,23 @@
     }
 
     /* CLIENTES */
-    .clientes{
-      background:var(--panel);
-      color:var(--text);
-      text-align:center;
-      padding:80px 0;
-    }
-    .clientes h2{
-      color:var(--primary);
-      font-size: clamp(22px, 4vw, 32px);
-      margin-bottom: 12px;
-    }
-    .clientes p{
-      color:var(--muted);
-      max-width: 700px;
-      margin: 0 auto 50px;
-    }
-    .clientes-grid{
-      display:flex; flex-wrap:wrap; justify-content:center; gap:30px;
-    }
+    .clientes{background:var(--panel); color:var(--text); text-align:center; padding:80px 0}
+    .clientes h2{color:var(--primary); font-size: clamp(22px, 4vw, 32px); margin-bottom: 12px}
+    .clientes p{color:var(--muted); max-width: 700px; margin: 0 auto 50px}
+    .clientes-grid{display:flex; flex-wrap:wrap; justify-content:center; gap:30px}
     .cliente-card{
-      background:#1b202a;
-      border-radius:16px;
-      padding:20px;
-      box-shadow:0 10px 25px rgba(0,0,0,.25);
-      max-width:350px; flex:1 1 300px;
-      text-align:center;
-      transition:transform .3s ease, box-shadow .3s ease;
-      /* Animación inicial (oculto) */
-      opacity:0; transform: translateY(24px);
+      background:#1b202a; border-radius:16px; padding:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,.25); max-width:350px; flex:1 1 300px;
+      text-align:center; transition:transform .3s ease, box-shadow .3s ease;
+      opacity:0; transform: translateY(24px); /* estado inicial para animación */
     }
     .cliente-card:hover{transform:translateY(-5px)}
-    .cliente-card.in-view{ /* visible cuando entra al viewport */
-      opacity:1; transform: translateY(0);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .cliente-card img{
-      width:100%; height:350px; object-fit:cover;
-      border-radius:12px; margin-bottom:16px;
-    }
-    .cliente-card h3{
-      font-size:1.05em; font-weight:600; color:#fff; margin:0;
-    }
+    .cliente-card.in-view{opacity:1; transform: translateY(0); transition: opacity .7s ease, transform .7s ease}
+    .cliente-card img{width:100%; height:350px; object-fit:cover; border-radius:12px; margin-bottom:16px}
+    .cliente-card h3{font-size:1.05em; font-weight:600; color:#fff; margin:0}
 
     /* PRECIO */
-    .pricing{
-      background:linear-gradient(135deg, var(--primary), var(--primary-2));
-      color:#fff;
-    }
+    .pricing{background:linear-gradient(135deg, var(--primary), var(--primary-2)); color:#fff}
     .price-wrap{max-width:860px; margin:0 auto; padding:6px 0}
     .price-card{
       background:#fff; color:#1c2330; border-radius:18px;
@@ -169,7 +153,7 @@
     .note{margin-top:10px; text-align:center; opacity:.95}
 
     /* FOOTER */
-    footer{background:#10141a; color:#cdd3de; text-align:center; padding:40px 0}
+    footer{background:#10141a; color:#cdd3de; text-align:center; padding:40px 0; padding-bottom:calc(40px + var(--safe-bottom))}
     footer a{color:#fff}
     .brand-foot{height:26px; vertical-align:middle}
   </style>
@@ -179,9 +163,7 @@
   <!-- NAV -->
   <nav class="nav">
     <div class="wrap">
-      <a class="brand" href="#">
-        <img src="imagen_2025-08-05_195149555.png" alt="ErgoRide">
-      </a>
+      <a class="brand" href="#"><img src="imagen_2025-08-05_195149555.png" alt="ErgoRide"></a>
       <div class="navlinks">
         <a href="#porque">¿Por qué ErgoRide?</a>
         <a href="#producto">Producto</a>
@@ -270,9 +252,8 @@
     </div>
   </footer>
 
-  <!-- Animación on-scroll (IntersectionObserver) -->
+  <!-- Animación on-scroll -->
   <script>
-    // Aplica fade-in al entrar en viewport
     const els = document.querySelectorAll('.reveal, .cliente-card');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
