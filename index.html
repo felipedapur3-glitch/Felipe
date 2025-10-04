@@ -4,25 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ErgoRide – Confort ergonómico para tu moto</title>
-
-  <!-- SEO / Social -->
-  <meta name="description" content="ErgoRide: asiento ergonómico con soporte lumbar para motos. Menos fatiga, mejor postura y más confort.">
-  <meta property="og:title" content="ErgoRide – Confort ergonómico para tu moto">
-  <meta property="og:description" content="Soporte lumbar, menor fatiga y mejor postura.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="Imagen5.png">
-  <link rel="icon" href="imagen_2025-08-05_195149555.png" type="image/png">
-
   <style>
     :root{
-      --bg:#0f1217;            /* fondo base oscuro */
-      --panel:#171b23;         /* paneles */
-      --text:#eef2f7;          /* texto principal */
-      --muted:#aeb6c4;         /* texto secundario */
-      --primary:#e02a3c;       /* rojo principal */
-      --primary-2:#b32130;     /* rojo hover */
-      --accent:#2a3546;        /* bordes suaves */
-      --light:#f7f8fa;         /* fondos claros */
+      --bg:#0f1217;
+      --panel:#171b23;
+      --text:#eef2f7;
+      --muted:#aeb6c4;
+      --primary:#e02a3c;
+      --primary-2:#b32130;
+      --accent:#2a3546;
+      --light:#f7f8fa;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -31,8 +22,6 @@
       color:var(--text); background:var(--bg); line-height:1.6;
     }
     a{color:inherit}
-    /* Que las anclas no queden escondidas bajo el navbar sticky */
-    [id]{scroll-margin-top:84px;}
 
     /* NAVBAR */
     .nav{
@@ -42,7 +31,10 @@
       backdrop-filter: blur(8px);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .nav .wrap{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;width:100%}
+    .nav .wrap{
+      max-width:1200px;margin:0 auto;
+      display:flex;align-items:center;gap:24px;width:100%
+    }
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
     .brand img{height:40px; width:auto; display:block}
     .navlinks{margin-left:auto; display:flex; gap:18px}
@@ -57,7 +49,7 @@
     /* HERO */
     .hero{
       position:relative; min-height:85vh; display:flex; align-items:center;
-      background:url('Imagen5.png') center/cover no-repeat;
+      background:url('Imagen5.png') center 20%/cover no-repeat; /* 🔹 Subido el encuadre */
       isolation:isolate;
     }
     .hero::before{
@@ -65,7 +57,9 @@
       background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.45));
       z-index:0;
     }
-    .hero .content{position:relative; z-index:1; width:100%;}
+    .hero .content{
+      position:relative; z-index:1; width:100%;
+    }
     .container{max-width:1200px;margin:0 auto;padding:0 24px}
     .kicker{font-weight:700; letter-spacing:.08em; color:#fff; opacity:.85}
     .hero h1{
@@ -94,7 +88,10 @@
 
     /* BENEFICIOS tarjetas */
     .grid{display:grid; gap:16px}
-    @media(min-width:760px){ .grid.two{grid-template-columns:1fr 1fr} .grid.three{grid-template-columns:repeat(3,1fr)} }
+    @media(min-width:760px){
+      .grid.two{grid-template-columns:1fr 1fr}
+      .grid.three{grid-template-columns:repeat(3,1fr)}
+    }
     .card{
       background:#1b202a; border:1px solid rgba(255,255,255,.06);
       border-left:6px solid var(--primary);
@@ -108,7 +105,6 @@
     .gallery img{
       width:100%; height:auto; display:block; border-radius:16px;
       box-shadow:0 10px 24px rgba(0,0,0,.22); background:#fff;
-      aspect-ratio: 4/3; object-fit: cover;          /* estabilidad visual */
     }
 
     /* PRECIO */
@@ -131,21 +127,6 @@
     footer{background:#10141a; color:#cdd3de; text-align:center; padding:40px 0}
     footer a{color:#fff}
     .brand-foot{height:26px; vertical-align:middle}
-
-    /* Botón flotante WhatsApp */
-    .wa-fab{
-      position: fixed; right: 18px; bottom: 18px; z-index: 60;
-      width: 56px; height: 56px; border-radius: 50%;
-      background: #25D366; display:flex; align-items:center; justify-content:center;
-      box-shadow: 0 12px 30px rgba(0,0,0,.25); text-decoration:none;
-    }
-    .wa-fab svg{ width:28px; height:28px; fill:#fff }
-    .wa-fab:hover{ filter: brightness(.95); }
-
-    /* Hero más oscuro en móviles pequeños */
-    @media (max-width:420px){
-      .hero::before{background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.5));}
-    }
   </style>
 </head>
 <body>
@@ -192,26 +173,15 @@
     </div>
   </section>
 
-  <!-- PRODUCTO / GALERÍA -->
+  <!-- PRODUCTO -->
   <section id="producto" class="section" style="background:var(--light); color:#2b3140">
     <div class="container">
       <h2 class="section-title" style="color:var(--primary-2)">ErgoRide en acción</h2>
       <p class="lead" style="color:#566173">Visualizá el sistema y cómo se integra con tu moto.</p>
       <div class="grid three gallery">
-        <img src="moto-ergo-ride.png.png"
-             srcset="moto-ergo-ride.png.png 1200w"
-             sizes="(max-width:760px) 100vw, 33vw"
-             alt="ErgoRide – vista general" loading="lazy">
-
-        <img src="Imagen4.png"
-             srcset="Imagen4.png 1200w"
-             sizes="(max-width:760px) 100vw, 33vw"
-             alt="Render del asiento ErgoRide" loading="lazy">
-
-        <img src="Imagen5.png"
-             srcset="Imagen5.png 1600w"
-             sizes="(max-width:760px) 100vw, 33vw"
-             alt="ErgoRide instalado en moto" loading="lazy">
+        <img src="moto-ergo-ride.png.png" alt="ErgoRide – vista general">
+        <img src="Imagen4.png" alt="Render del asiento ErgoRide">
+        <img src="Imagen5.png" alt="ErgoRide instalado en moto">
       </div>
     </div>
   </section>
@@ -222,7 +192,6 @@
       <h2 class="section-title">Precio de lanzamiento</h2>
       <div class="price-card">
         <span class="price">$63.000</span>
-        <!-- Reemplazá 54911TU_NUMERO por tu número (sin + ni 0) -->
         <a class="buy" href="https://wa.me/54911TU_NUMERO?text=Hola%20quiero%20comprar%20ErgoRide" target="_blank" rel="noopener">Comprar ahora</a>
       </div>
       <p class="note">Stock Disponible. Envíos a todo el país.</p>
@@ -232,19 +201,13 @@
   <!-- FOOTER -->
   <footer id="contacto">
     <div class="container">
-      <p><img src="imagen_2025-08-05_195149555.png" class="brand-foot" alt="ErgoRide"></p>
+      <p>
+        <img src="imagen_2025-08-05_195149555.png" class="brand-foot" alt="ErgoRide">
+      </p>
       <p>¿Dudas? Escribinos por <a href="https://wa.me/54911TU_NUMERO" target="_blank" rel="noopener">WhatsApp</a>.</p>
       <p style="opacity:.7">&copy; 2024 ErgoRide Project.</p>
     </div>
   </footer>
-
-  <!-- Botón flotante WhatsApp -->
-  <a class="wa-fab" aria-label="Chatear por WhatsApp"
-     href="https://wa.me/54911TU_NUMERO?text=Hola%20me%20interesa%20ErgoRide" target="_blank" rel="noopener">
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M19.1 17.6c-.3-.2-1.7-.8-1.9-.9s-.4-.1-.6.1-.7.9-.9 1.1-.3.2-.6.1a6.9 6.9 0 0 1-2-1.2 7.5 7.5 0 0 1-1.4-1.7c-.1-.3 0-.4.1-.6l.5-.6c.1-.2.1-.3 0-.5s-.6-1.6-.8-2.2-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.8.8-1.2 1.8-1.2 2.8 0 1 .3 2 1 2.9a9.8 9.8 0 0 0 3.7 3.2c.5.2 1.4.5 1.9.6.8.2 1.5.1 2.1.1.7-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.1-1.5zM16 3a13 13 0 0 0-11 19.6L3.5 29 10 27a13 13 0 1 0 6-24z"/>
-    </svg>
-  </a>
 
 </body>
 </html>
