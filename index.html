@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ErgoRide – Confort ergonómico para tu moto</title>
+
+  <!-- SEO / Social (opcional) -->
+  <meta name="description" content="ErgoRide: asiento ergonómico con soporte lumbar para motos. Menos fatiga, mejor postura y más confort.">
+  <meta property="og:title" content="ErgoRide – Confort ergonómico para tu moto">
+  <meta property="og:description" content="Soporte lumbar, menor fatiga y mejor postura.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="Imagen5.png">
+  <link rel="icon" href="imagen_2025-08-05_195149555.png" type="image/png">
+
   <style>
     :root{
       --bg:#0f1217;
@@ -12,7 +21,6 @@
       --muted:#aeb6c4;
       --primary:#e02a3c;
       --primary-2:#b32130;
-      --accent:#2a3546;
       --light:#f7f8fa;
     }
     *{box-sizing:border-box}
@@ -22,6 +30,7 @@
       color:var(--text); background:var(--bg); line-height:1.6;
     }
     a{color:inherit}
+    [id]{scroll-margin-top:84px;}
 
     /* NAVBAR */
     .nav{
@@ -31,10 +40,7 @@
       backdrop-filter: blur(8px);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .nav .wrap{
-      max-width:1200px;margin:0 auto;
-      display:flex;align-items:center;gap:24px;width:100%
-    }
+    .nav .wrap{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;width:100%}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
     .brand img{height:40px; width:auto; display:block}
     .navlinks{margin-left:auto; display:flex; gap:18px}
@@ -49,7 +55,7 @@
     /* HERO */
     .hero{
       position:relative; min-height:85vh; display:flex; align-items:center;
-      background:url('Imagen5.png') center 20%/cover no-repeat; /* 🔹 Subido el encuadre */
+      background:url('Imagen5.png') center 20%/cover no-repeat; /* encuadre alto */
       isolation:isolate;
     }
     .hero::before{
@@ -57,9 +63,7 @@
       background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.45));
       z-index:0;
     }
-    .hero .content{
-      position:relative; z-index:1; width:100%;
-    }
+    .hero .content{position:relative; z-index:1; width:100%;}
     .container{max-width:1200px;margin:0 auto;padding:0 24px}
     .kicker{font-weight:700; letter-spacing:.08em; color:#fff; opacity:.85}
     .hero h1{
@@ -78,7 +82,7 @@
     .btn.secondary{background:#fff; color:#111}
     .btn.secondary:hover{filter:brightness(.95)}
 
-    /* SECCIONES */
+    /* SECCIONES GENERALES */
     .section{padding:64px 0}
     .section.dark{background:var(--panel)}
     h2.section-title{
@@ -86,12 +90,8 @@
     }
     .section .lead{color:var(--muted); text-align:center; margin:0 auto 28px; max-width:800px}
 
-    /* BENEFICIOS tarjetas */
     .grid{display:grid; gap:16px}
-    @media(min-width:760px){
-      .grid.two{grid-template-columns:1fr 1fr}
-      .grid.three{grid-template-columns:repeat(3,1fr)}
-    }
+    @media(min-width:760px){ .grid.two{grid-template-columns:1fr 1fr} .grid.three{grid-template-columns:repeat(3,1fr)} }
     .card{
       background:#1b202a; border:1px solid rgba(255,255,255,.06);
       border-left:6px solid var(--primary);
@@ -105,6 +105,51 @@
     .gallery img{
       width:100%; height:auto; display:block; border-radius:16px;
       box-shadow:0 10px 24px rgba(0,0,0,.22); background:#fff;
+      aspect-ratio: 4/3; object-fit: cover;
+    }
+
+    /* CLIENTES */
+    .clientes{
+      background:var(--panel);
+      color:var(--text);
+      text-align:center;
+      padding:80px 0;
+    }
+    .clientes h2{
+      color:var(--primary);
+      font-size: clamp(22px, 4vw, 32px);
+      margin-bottom: 12px;
+    }
+    .clientes p{
+      color:var(--muted);
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+    .clientes-grid{
+      display:flex; flex-wrap:wrap; justify-content:center; gap:30px;
+    }
+    .cliente-card{
+      background:#1b202a;
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,.25);
+      max-width:350px; flex:1 1 300px;
+      text-align:center;
+      transition:transform .3s ease, box-shadow .3s ease;
+      /* Animación inicial (oculto) */
+      opacity:0; transform: translateY(24px);
+    }
+    .cliente-card:hover{transform:translateY(-5px)}
+    .cliente-card.in-view{ /* visible cuando entra al viewport */
+      opacity:1; transform: translateY(0);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .cliente-card img{
+      width:100%; height:350px; object-fit:cover;
+      border-radius:12px; margin-bottom:16px;
+    }
+    .cliente-card h3{
+      font-size:1.05em; font-weight:600; color:#fff; margin:0;
     }
 
     /* PRECIO */
@@ -159,7 +204,7 @@
     </div>
   </header>
 
-  <!-- POR QUÉ -->
+  <!-- BENEFICIOS -->
   <section id="porque" class="section dark">
     <div class="container">
       <h2 class="section-title">Beneficios clave</h2>
@@ -186,6 +231,24 @@
     </div>
   </section>
 
+  <!-- CLIENTES -->
+  <section class="clientes">
+    <div class="container">
+      <h2>Usuarios reales, experiencias reales</h2>
+      <p>Conocé a quienes ya eligieron ErgoRide para transformar su forma de viajar.</p>
+      <div class="clientes-grid">
+        <div class="cliente-card reveal">
+          <img src="cliente.jpg" alt="Cliente usando ErgoRide">
+          <h3>“Ahora puedo recorrer la ciudad sin molestias en la espalda.”</h3>
+        </div>
+        <div class="cliente-card reveal">
+          <img src="cliente 2.jpg" alt="Cliente con ErgoRide">
+          <h3>“Ideal para largas jornadas. No me canso como antes.”</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PRECIO -->
   <section id="precio" class="section pricing">
     <div class="container price-wrap">
@@ -201,13 +264,25 @@
   <!-- FOOTER -->
   <footer id="contacto">
     <div class="container">
-      <p>
-        <img src="imagen_2025-08-05_195149555.png" class="brand-foot" alt="ErgoRide">
-      </p>
+      <p><img src="imagen_2025-08-05_195149555.png" class="brand-foot" alt="ErgoRide"></p>
       <p>¿Dudas? Escribinos por <a href="https://wa.me/54911TU_NUMERO" target="_blank" rel="noopener">WhatsApp</a>.</p>
       <p style="opacity:.7">&copy; 2024 ErgoRide Project.</p>
     </div>
   </footer>
 
+  <!-- Animación on-scroll (IntersectionObserver) -->
+  <script>
+    // Aplica fade-in al entrar en viewport
+    const els = document.querySelectorAll('.reveal, .cliente-card');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.15});
+    els.forEach(el => io.observe(el));
+  </script>
 </body>
 </html>
