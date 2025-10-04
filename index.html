@@ -55,6 +55,13 @@
   .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
   .hero-img{width:100%;border-radius:18px;border:1px solid rgba(255,255,255,.06);background:var(--panel);aspect-ratio:16/10;object-fit:cover}
 
+  /* ======= CARACTERÍSTICAS ======= */
+  .features-grid{display:grid;grid-template-columns: repeat(auto-fill, minmax(220px,1fr));gap:14px}
+  .feat{background: var(--panel);border: 1px solid rgba(255,255,255,.08);border-radius: 16px;padding: 16px}
+  .feat-ico{ width:32px; height:32px; margin-bottom:8px; opacity:.9 }
+  .feat h3{ margin:6px 0 6px 0; font-size:1.05rem }
+  .feat p{ color: var(--texto-sec); margin:0 }
+
   /* ======= GALERÍA ======= */
   .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
   .g-item{border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;background:var(--panel)}
@@ -121,7 +128,7 @@
 
 <header>
   <nav class="nav">
-    <div class="brand"><img src="img/logo-ergo.png" alt="ErgoRide">ErgoRide</div>
+    <div class="brand"><img src="./img/logo-ergo.png" alt="ErgoRide">ErgoRide</div>
     <div class="spacer"></div>
     <a href="#precio" class="btn btn-ghost">Precio</a>
     <a href="#compatibilidad" class="btn btn-ghost">Compatibilidad</a>
@@ -141,7 +148,53 @@
         <a href="#como-funciona" class="btn btn-ghost">Ver cómo funciona</a>
       </div>
     </div>
-    <div><img class="hero-img" src="img/hero-asiento.jpg" alt="ErgoRide instalado en moto"></div>
+    <div><img class="hero-img" src="./img/hero-asiento.jpg" alt="ErgoRide instalado en moto" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
+  </div>
+</section>
+
+<!-- CARACTERÍSTICAS -->
+<section id="caracteristicas" class="section reveal">
+  <div class="container">
+    <h2 class="section-title">Características principales</h2>
+    <p class="section-sub">Diseñado por ingenieros para mejorar tu postura y reducir la fatiga sin modificar tu moto.</p>
+
+    <div class="features-grid">
+      <article class="feat">
+        <img src="./img/icons/ergonomia.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
+        <h3>Ergonomía real</h3>
+        <p>Soporte lumbar que distribuye mejor el peso y mantiene una postura saludable.</p>
+      </article>
+
+      <article class="feat">
+        <img src="./img/icons/clock.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
+        <h3>Instalación rápida</h3>
+        <p>Se coloca y retira en minutos con anclaje seguro. No requiere modificaciones.</p>
+      </article>
+
+      <article class="feat">
+        <img src="./img/icons/tool.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
+        <h3>Sistema desmontable</h3>
+        <p>Usalo cuando lo necesitás. Mantiene la estética y funcionalidad de la moto.</p>
+      </article>
+
+      <article class="feat">
+        <img src="./img/icons/shield.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
+        <h3>Materiales resistentes</h3>
+        <p>Espuma HR, cobertura durable y base plástica inyectada de alta calidad.</p>
+      </article>
+
+      <article class="feat">
+        <img src="./img/icons/road.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
+        <h3>Comfort urbano y ruta</h3>
+        <p>Reduce la fatiga tanto en trayectos cortos diarios como en viajes largos.</p>
+      </article>
+
+      <article class="feat">
+        <img src="./img/icons/warranty.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
+        <h3>Garantía 6 meses</h3>
+        <p>Cobertura por defectos de fabricación y soporte postventa.</p>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -150,13 +203,14 @@
   <div class="container">
     <h2 class="section-title">ErgoRide en acción</h2>
     <p class="section-sub">Imágenes reales del asiento instalado. Se monta y desmonta en minutos.</p>
+
     <div class="gallery">
-      <div class="g-item"><img src="img/accion/1.jpg" alt=""></div>
-      <div class="g-item"><img src="img/accion/2.jpg" alt=""></div>
-      <div class="g-item"><img src="img/accion/3.jpg" alt=""></div>
-      <div class="g-item"><img src="img/accion/4.jpg" alt=""></div>
-      <div class="g-item"><img src="img/accion/5.jpg" alt=""></div>
-      <div class="g-item"><img src="img/accion/6.jpg" alt=""></div>
+      <div class="g-item"><img src="./img/accion/1.jpg" alt="ErgoRide en Honda Wave" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
+      <div class="g-item"><img src="./img/accion/2.jpg" alt="Detalle de soporte lumbar" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
+      <div class="g-item"><img src="./img/accion/3.jpg" alt="Vista lateral instalada" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
+      <div class="g-item"><img src="./img/accion/4.jpg" alt="Ajuste y anclaje" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
+      <div class="g-item"><img src="./img/accion/5.jpg" alt="Test en ruta" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
+      <div class="g-item"><img src="./img/accion/6.jpg" alt="ErgoRide detalle" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
     </div>
   </div>
 </section>
@@ -171,22 +225,22 @@
         <article class="t-card">
           <div class="t-stars" aria-label="5 estrellas">★★★★★</div>
           <p>“Hago repartos 8 horas por día. Con ErgoRide dejé de llegar con dolor lumbar y mejoró mi postura.”</p>
-          <div class="t-user"><img src="img/users/lucas.png" alt=""><div><strong>Lucas M.</strong><br><small>Repartidor, CABA</small></div></div>
+          <div class="t-user"><img src="./img/users/lucas.png" alt="" onerror="this.onerror=null;this.src='./img/placeholder-user.png';"><div><strong>Lucas M.</strong><br><small>Repartidor, CABA</small></div></div>
         </article>
         <article class="t-card">
           <div class="t-stars" aria-label="5 estrellas">★★★★★</div>
           <p>“Viajo 40 km diarios. La espalda deja de cargar todo el peso. Instalación rápida.”</p>
-          <div class="t-user"><img src="img/users/sofia.png" alt=""><div><strong>Sofía R.</strong><br><small>Zona Norte</small></div></div>
+          <div class="t-user"><img src="./img/users/sofia.png" alt="" onerror="this.onerror=null;this.src='./img/placeholder-user.png';"><div><strong>Sofía R.</strong><br><small>Zona Norte</small></div></div>
         </article>
         <article class="t-card">
           <div class="t-stars" aria-label="5 estrellas">★★★★★</div>
           <p>“Antes paraba cada 30 min por molestias. Ahora hago tramos largos sin dolor.”</p>
-          <div class="t-user"><img src="img/users/martin.png" alt=""><div><strong>Martín A.</strong><br><small>La Plata</small></div></div>
+          <div class="t-user"><img src="./img/users/martin.png" alt="" onerror="this.onerror=null;this.src='./img/placeholder-user.png';"><div><strong>Martín A.</strong><br><small>La Plata</small></div></div>
         </article>
         <article class="t-card">
           <div class="t-stars" aria-label="5 estrellas">★★★★★</div>
           <p>“Relación precio/beneficio excelente. Más estable al frenar.”</p>
-          <div class="t-user"><img src="img/users/daiana.png" alt=""><div><strong>Daiana P.</strong><br><small>Rosario</small></div></div>
+          <div class="t-user"><img src="./img/users/daiana.png" alt="" onerror="this.onerror=null;this.src='./img/placeholder-user.png';"><div><strong>Daiana P.</strong><br><small>Rosario</small></div></div>
         </article>
       </div>
       <button class="t-btn next" aria-label="Siguiente">›</button>
@@ -211,7 +265,7 @@
         </ul>
       </div>
       <div class="price-right">
-        <a href="#comprar" class="btn btn-primary">Comprar ahora</a>
+        <a href="https://wa.me/5491100000000" target="_blank" rel="noopener" class="btn btn-primary">Comprar ahora</a>
         <a href="#contacto" class="btn btn-ghost">Consultar por mi modelo</a>
         <small class="footnote">Precio final con IVA. Promos bancarias y envío a consultar.</small>
       </div>
@@ -242,13 +296,13 @@
       </div>
       <div class="compat-body">
         <div class="compat-info">
-          <img src="img/icons/moto.png" alt="Moto" class="compat-icon">
+          <img src="./img/icons/moto.png" alt="Moto" class="compat-icon" onerror="this.onerror=null;this.src='./img/placeholder-icon.png';">
           <div>
             <div id="compat-model" class="compat-model">Honda Wave 110</div>
             <a href="#compatibilidad" class="compat-change">Cambiar vehículo</a>
           </div>
         </div>
-        <a href="#comprar" class="btn btn-primary compat-btn">Ver productos compatibles</a>
+        <a href="#precio" class="btn btn-primary compat-btn">Ver productos compatibles</a>
       </div>
     </div>
 
@@ -337,7 +391,6 @@
   const FIT_LABEL = { ok: "Listo", maybe: "Ajuste menor" };
 
   let state = { text:'', cc:'all' };
-
   function norm(s){ return s.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase(); }
 
   function renderList(){
@@ -358,12 +411,10 @@
       </li>
     `).join('') || `<li><div>No encontramos ese modelo. Probá otra búsqueda.</div></li>`;
 
-    // clic en un item => muestra tarjeta compatible
     Array.from(listEl.querySelectorAll('li[data-idx]')).forEach((li,i)=>{
       li.addEventListener('click', ()=> showCard(filtered[i]));
     });
 
-    // actualizar tarjeta automáticamente según búsqueda
     updateCardFromSearch(txt, filtered);
   }
 
@@ -378,14 +429,12 @@
   function updateCardFromSearch(txt, filtered){
     if(!inputEl.value.trim()){ compatBox.classList.add('hidden'); return; }
     if(filtered.length>0){
-      // si hay resultados, tomamos el primero como compatible
       showCard(filtered[0]);
     }else{
       showCard(null, inputEl.value.trim());
     }
   }
 
-  // eventos
   inputEl.addEventListener('input', e=>{ state.text = e.target.value; renderList(); });
   chips.forEach(c=> c.addEventListener('click', ()=>{
     chips.forEach(x=>x.classList.remove('is-active'));
@@ -393,7 +442,6 @@
     state.cc = c.dataset.filter; renderList();
   }));
 
-  // primera carga
   renderList();
 </script>
 </body>
