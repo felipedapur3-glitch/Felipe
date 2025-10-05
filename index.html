@@ -123,6 +123,23 @@
     .price-bullets{margin:14px 0 0 0;padding-left:18px;color:#445}
     .note{text-align:center;margin-top:10px;opacity:.95}
 
+    /* COMPATIBILIDAD (restaurado) */
+    .filters{display:grid;gap:12px;grid-template-columns:1fr auto;margin-bottom:12px}
+    #q-model{background:#1b202a;color:var(--text);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px 14px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .chip{background:#1b202a;color:var(--text);border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;font-size:.9rem;cursor:pointer}
+    .chip.is-active,.chip:hover{background:var(--primary);border-color:var(--primary)}
+    @media (max-width:560px){ .chips{display:none} }
+    .compat-card{border-radius:14px;border:1px solid rgba(255,255,255,.08);overflow:hidden;max-width:920px;background:#1b202a;display:flex;flex-direction:column;margin:14px auto}
+    .compat-header{padding:12px 16px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
+    .compat-header.ok{background:#27ae60}
+    .compat-header.no{background:#c0392b}
+    .compat-body{padding:16px;display:flex;flex-direction:column;gap:14px}
+    .compat-info{display:flex;align-items:center;gap:12px}
+    .compat-icon{width:34px;height:34px;object-fit:contain}
+    .compat-model{font-weight:600}
+    .compat-btn{align-self:flex-start;text-align:center;width:100%;justify-content:center}
+
     /* FOOTER (3 columnas) */
     .footer{background:#0b0e13;padding:52px 0;border-top:1px solid rgba(255,255,255,.06)}
     .f-wrap{max-width:1200px;margin:0 auto;padding:0 24px;display:grid;gap:24px;grid-template-columns:1fr}
@@ -232,10 +249,47 @@
     </div>
   </section>
 
+  <!-- COMPATIBILIDAD (restaurado) -->
+  <section id="compatibilidad" class="section">
+    <h2 class="section-title reveal">¿Tu moto es compatible?</h2>
+    <p class="lead reveal">Escribí la marca o el modelo. Te mostramos si es compatible.</p>
+
+    <div class="container">
+      <div class="filters reveal">
+        <input id="q-model" type="search" placeholder="Buscar modelo o marca… (ej. Wave, Motomel)">
+        <div class="chips">
+          <button class="chip is-active" data-filter="all">Todos</button>
+          <button class="chip" data-filter="110">110 cc</button>
+          <button class="chip" data-filter="150">150 cc</button>
+          <button class="chip" data-filter="200">200 cc</button>
+        </div>
+      </div>
+
+      <div id="compat-box" class="compat-card hidden reveal" aria-live="polite">
+        <div class="compat-header ok" id="compat-header">
+          <strong id="compat-status">Compatible con tu vehículo</strong>
+        </div>
+        <div class="compat-body">
+          <div class="compat-info">
+            <img src="imagen_2025-08-05_195149555.png" alt="Logo ErgoRide" class="compat-icon">
+            <div>
+              <div id="compat-model" class="compat-model">Honda Wave 110</div>
+              <a href="#compatibilidad" class="compat-change" style="color:#8ab4ff">Cambiar vehículo</a>
+            </div>
+          </div>
+          <a href="#precio" class="btn primary compat-btn">Ver productos compatibles</a>
+        </div>
+      </div>
+
+      <p class="lead reveal" style="margin-top:12px">
+        ¿No aparece tu modelo? Escribinos por WhatsApp y te ayudamos.
+      </p>
+    </div>
+  </section>
+
   <!-- FOOTER (3 columnas) -->
   <footer id="contacto" class="footer">
     <div class="f-wrap">
-      <!-- Columna 1: Marca + redes -->
       <div class="f-brand reveal">
         <img src="imagen_2025-08-05_195149555.png" alt="ErgoRide" style="height:34px">
         <h4>ErgoRide</h4>
@@ -249,21 +303,19 @@
         </div>
       </div>
 
-      <!-- Columna 2: Links + CTA -->
       <div class="f-col reveal">
         <h5>Compañía</h5>
         <div class="f-links">
           <a href="#porque">¿Por qué ErgoRide?</a>
           <a href="#producto">¿Cómo funciona?</a>
           <a href="#precio">Precio</a>
-          <a href="#producto">Compatibilidad</a>
+          <a href="#compatibilidad">Compatibilidad</a>
         </div>
         <div class="f-cta">
           <a class="btn primary" href="#precio">Quiero mi ErgoRide</a>
         </div>
       </div>
 
-      <!-- Columna 3: Mapa -->
       <div class="f-col reveal">
         <h5>Encontranos</h5>
         <iframe class="map"
@@ -276,13 +328,77 @@
   </footer>
 
   <script>
-    // Animación reveal en todas las secciones
+    // Animación reveal
     const obs = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
         if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
       });
     }, {threshold:.15});
     document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+    // COMPATIBILIDAD (restaurado)
+    const ERGORIDE_MODELS = [
+      {brand:"Honda",   model:"Wave 110",   cc:110, fit:"ok"},
+      {brand:"Honda",   model:"Wave 110 S", cc:110, fit:"ok"},
+      {brand:"Honda",   model:"XR150L",     cc:150, fit:"maybe"},
+      {brand:"Motomel", model:"B110",       cc:110, fit:"ok"},
+      {brand:"Motomel", model:"S2 150",     cc:150, fit:"ok"},
+      {brand:"Motomel", model:"CX 150",     cc:150, fit:"maybe"},
+      {brand:"Gilera",  model:"Smash",      cc:110, fit:"ok"},
+      {brand:"Keller",  model:"KN110-8",    cc:110, fit:"ok"},
+      {brand:"Corven",  model:"Energy 110", cc:110, fit:"ok"},
+      {brand:"Guerrero",model:"G110 Trip",  cc:110, fit:"ok"},
+      {brand:"Zanella", model:"ZB 110",     cc:110, fit:"ok"},
+      {brand:"Bajaj",   model:"Rouser 200", cc:200, fit:"maybe"},
+    ];
+    const FIT_LABEL = { ok:"Compatible con tu vehículo", maybe:"Puede requerir ajuste menor" };
+
+    const inputEl = document.getElementById('q-model');
+    const chips = Array.from(document.querySelectorAll('.chip'));
+    const compatBox = document.getElementById('compat-box');
+    const compatHeader = document.getElementById('compat-header');
+    const compatStatus = document.getElementById('compat-status');
+    const compatModel  = document.getElementById('compat-model');
+
+    const norm = s => (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
+
+    function findMatch(txt, cc){
+      const q = norm(txt);
+      const filtered = ERGORIDE_MODELS.filter(m=>{
+        const t = norm(m.brand+' '+m.model);
+        const okTxt = !q || t.includes(q);
+        const okCc  = cc==='all' || String(m.cc)===String(cc);
+        return okTxt && okCc;
+      });
+      return filtered[0] || null;
+    }
+
+    let state = { text:'', cc:'all' };
+
+    function updateCard(){
+      if(!inputEl.value.trim()){ compatBox.classList.add('hidden'); return; }
+      const m = findMatch(state.text, state.cc);
+      compatBox.classList.remove('hidden');
+      if(m){
+        compatHeader.className = 'compat-header ok';
+        compatStatus.textContent = FIT_LABEL[m.fit] || 'Compatible';
+        compatModel.textContent = `${m.brand} ${m.model}`;
+      }else{
+        compatHeader.className = 'compat-header no';
+        compatStatus.textContent = 'No es compatible con tu vehículo';
+        compatModel.textContent  = inputEl.value.trim();
+      }
+    }
+
+    if(inputEl){
+      inputEl.addEventListener('input', e=>{ state.text = e.target.value; updateCard(); });
+    }
+    chips.forEach(c=> c.addEventListener('click', ()=>{
+      chips.forEach(x=>x.classList.remove('is-active'));
+      c.classList.add('is-active');
+      state.cc = c.dataset.filter;
+      updateCard();
+    }));
   </script>
 </body>
 </html>
