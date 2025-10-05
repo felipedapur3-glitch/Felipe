@@ -1,448 +1,468 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ErgoRide – Ergonomía aplicada al motociclismo</title>
-<style>
-  :root{
-    --bg-oscuro:#0f1318;
-    --panel:#1a1f27;
-    --panel-2:#232733;
-    --texto:#ECEFF4;
-    --texto-sec:#A8B0BD;
-    --rojo:#E0263A;
-    --rojo-2:#B01E2D;
-    --azul:#3498db;
-    --ok:#27ae60;
-    --no:#c0392b;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg-oscuro);color:var(--texto);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
-  a{color:inherit;text-decoration:none}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>ErgoRide – Confort ergonómico para tu moto</title>
 
-  /* ======= NAV ======= */
-  header{position:sticky;top:0;background:rgba(15,19,24,.8);backdrop-filter:blur(8px);z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
-  .nav{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:16px}
-  .nav .brand{display:flex;align-items:center;gap:10px;font-weight:700}
-  .nav img{height:28px}
-  .nav .spacer{flex:1}
-  .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;padding:12px 18px;font-weight:600;border:1px solid transparent;cursor:pointer}
-  .btn-primary{background:var(--rojo);border-color:var(--rojo)}
-  .btn-primary:hover{background:var(--rojo-2);border-color:var(--rojo-2)}
-  .btn-ghost{background:transparent;border-color:rgba(255,255,255,.12)}
-  .btn-ghost:hover{border-color:rgba(255,255,255,.3)}
+  <meta name="description" content="ErgoRide: asiento ergonómico con soporte lumbar para motos. Menos fatiga, mejor postura y más confort.">
+  <meta property="og:title" content="ErgoRide – Confort ergonómico para tu moto">
+  <meta property="og:description" content="Soporte lumbar, menor fatiga y mejor postura.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="Imagen5.png">
+  <link rel="icon" href="imagen_2025-08-05_195149555.png" type="image/png">
 
-  /* ======= SECCIONES ======= */
-  .section{padding:88px 0}
-  .container{max-width:1100px;margin:0 auto;padding:0 16px}
-  .section-title{font-size:clamp(1.6rem,2vw+1rem,2.2rem);margin:0 0 10px}
-  .section-sub{color:var(--texto-sec);margin:0 0 22px}
-  .section + .section{position:relative}
-  .section + .section:before{
-    content:"";position:absolute;top:-1px;left:0;right:0;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent)
-  }
-  .alt{background:#141921}
+  <style>
+    :root{
+      --bg:#0f1217; --panel:#171b23; --panel-2:#0c0f14;
+      --text:#eef2f7; --muted:#aeb6c4;
+      --primary:#e02a3c; --primary-2:#b32130; --light:#f7f8fa;
+      --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+      --safe-left: env(safe-area-inset-left); --safe-right: env(safe-area-inset-right);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family: Arial, Helvetica, sans-serif;
+      color:var(--text); background:var(--bg); line-height:1.6;
+      overflow-x:hidden;
+      padding-left:max(0px,var(--safe-left)); padding-right:max(0px,var(--safe-right));
+    }
+    a{color:inherit; text-decoration:none}
+    [id]{scroll-margin-top:84px}
+    .hidden{display:none!important}
 
-  /* ======= HERO ======= */
-  .hero{padding:120px 0 90px;background: radial-gradient(1200px 500px at 20% -10%, rgba(224,38,58,.15), transparent 60%)}
-  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
-  @media (max-width: 900px){ .hero-grid{grid-template-columns:1fr} }
-  .eyebrow{color:var(--texto-sec);letter-spacing:.08em;text-transform:uppercase;font-size:.85rem}
-  .h1{font-size:clamp(2rem,3.6vw+1rem,3.4rem);line-height:1.1;margin:10px 0 14px}
-  .lead{color:var(--texto-sec);font-size:1.05rem;max-width:55ch}
-  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-  .hero-img{width:100%;border-radius:18px;border:1px solid rgba(255,255,255,.06);background:var(--panel);aspect-ratio:16/10;object-fit:cover}
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      display:flex; align-items:center; gap:24px;
+      padding:14px 20px; padding-top:calc(14px + var(--safe-top));
+      background:rgba(15,18,23,.6); backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav .wrap{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;width:100%}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:40px; width:auto; display:block}
+    .navlinks{margin-left:auto; display:flex; gap:18px; align-items:center}
+    .navlinks a{padding:8px 10px; color:var(--muted); white-space:nowrap}
+    .navlinks a:hover{color:#fff}
+    .btn-small{background:var(--primary); color:#fff; border-radius:10px; padding:8px 14px; font-weight:700}
+    .btn-small:hover{background:var(--primary-2)}
+    @media (max-width:540px){
+      .navlinks a[href^="#"]:not(.btn-small){display:none}
+      .nav{gap:12px}
+      .brand img{height:34px}
+    }
 
-  /* ======= CARACTERÍSTICAS ======= */
-  .features-grid{display:grid;grid-template-columns: repeat(auto-fill, minmax(220px,1fr));gap:14px}
-  .feat{background: var(--panel);border: 1px solid rgba(255,255,255,.08);border-radius: 16px;padding: 16px}
-  .feat-ico{ width:32px; height:32px; margin-bottom:8px; opacity:.9 }
-  .feat h3{ margin:6px 0 6px 0; font-size:1.05rem }
-  .feat p{ color: var(--texto-sec); margin:0 }
+    /* CONTAINER */
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    @media (max-width:480px){ .container{padding:0 16px} }
 
-  /* ======= GALERÍA ======= */
-  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
-  .g-item{border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;background:var(--panel)}
-  .g-item img{width:100%;height:100%;object-fit:cover;display:block}
+    /* HERO */
+    .hero{
+      position:relative; min-height:86svh; display:flex; align-items:center;
+      background:url('Imagen5.png') center 32%/cover no-repeat;
+      isolation:isolate;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:0; z-index:0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.12) 70%, rgba(0,0,0,0) 100%),
+        radial-gradient(900px 420px at 20% 18%, rgba(224,42,60,.16), transparent 55%);
+    }
+    .hero .content{position:relative; z-index:1; width:100%;}
+    .kicker{font-weight:700; letter-spacing:.08em; color:#fff; opacity:.85}
+    .hero h1{
+      font-size: clamp(28px, 6vw, 54px);
+      margin:10px 0 6px; line-height:1.12;
+      text-shadow:0 2px 14px rgba(0,0,0,.35);
+      max-width: 24ch;
+    }
+    .hero p{color:var(--light); max-width:760px; margin:12px 0 26px; opacity:.95}
+    .cta-row{display:flex; gap:14px; flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;padding:12px 18px;font-weight:700;border:1px solid transparent;cursor:pointer}
+    .btn.primary{background:var(--primary); color:#fff}
+    .btn.primary:hover{background:var(--primary-2)}
+    .btn.secondary{background:#fff; color:#111}
+    .btn.secondary:hover{filter:brightness(.95)}
+    @media (max-width:480px){
+      .hero::before{background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.5));}
+      .kicker{font-size:.9rem}
+      .hero h1{font-size: clamp(24px, 7.2vw, 34px); line-height:1.15; margin-bottom:10px}
+      .hero p{font-size:.98rem; margin-bottom:18px}
+      .cta-row .btn{width:100%; text-align:center}
+    }
 
-  /* ======= TESTIMONIOS ======= */
-  .testimonials{position:relative;display:flex;align-items:center;gap:12px}
-  .t-btn{background:var(--panel);color:var(--texto);border:1px solid rgba(255,255,255,.08);width:42px;height:42px;border-radius:12px}
-  .t-track{overflow:hidden;display:grid;grid-auto-flow:column;grid-auto-columns:100%}
-  @media (min-width:800px){ .t-track{grid-auto-columns:50%} }
-  @media (min-width:1100px){ .t-track{grid-auto-columns:33.333%} }
-  .t-card{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:20px;margin:8px;display:flex;flex-direction:column;gap:14px}
-  .t-stars{letter-spacing:2px;color:var(--rojo);font-size:1.1rem}
-  .t-user{display:flex;align-items:center;gap:12px}
-  .t-user img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+    /* SECCIONES */
+    .section{padding:64px 0}
+    .section.dark{background:var(--panel)}
+    h2.section-title{text-align:center; margin:0 0 12px; font-size:clamp(22px,4.2vw,34px)}
+    .section .lead{color:var(--muted); text-align:center; margin:0 auto 28px; max-width:800px}
 
-  /* ======= COMPATIBILIDAD ======= */
-  .filters{display:grid;gap:12px;grid-template-columns:1fr auto;margin-bottom:12px}
-  #q-model{background:var(--panel);color:var(--texto);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px}
-  .chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-  .chip{background:var(--panel);color:var(--texto);border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;font-size:.9rem;cursor:pointer}
-  .chip.is-active,.chip:hover{background:var(--rojo);border-color:var(--rojo)}
-  .models-grid{list-style:none;margin:18px 0 8px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
-  .models-grid li{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-  .models-grid .mm{color:var(--texto-sec);font-size:.9rem}
-  .badge{font-size:.75rem;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.14)}
-  .badge.ok{background:rgba(40,180,99,.15);border-color:rgba(40,180,99,.35)}
-  .badge.maybe{background:rgba(241,196,15,.15);border-color:rgba(241,196,15,.35)}
-  .compat-note{color:var(--texto-sec);margin-top:10px;font-size:.9rem;display:flex;gap:14px;align-items:center}
-  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px}
-  .dot.ok{background:#2ecc71}.dot.maybe{background:#f1c40f}
+    .grid{display:grid; gap:16px}
+    @media(min-width:760px){ .grid.two{grid-template-columns:1fr 1fr} .grid.three{grid-template-columns:repeat(3,1fr)} }
+    .card{
+      background:#1b202a; border:1px solid rgba(255,255,255,.06);
+      padding:18px; border-radius:14px; color:#e8ecf5;
+      box-shadow:0 8px 22px rgba(0,0,0,.18); text-align:left;
+    }
+    .card strong{color:#fff}
 
-  /* ======= TARJETA COMPATIBLE/NO ======= */
-  .compat-card{border-radius:14px;border:1px solid rgba(255,255,255,.08);overflow:hidden;max-width:520px;background:var(--panel);display:flex;flex-direction:column;margin:14px 0}
-  .compat-header{padding:10px 16px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
-  .compat-header.ok{background:var(--ok)}
-  .compat-header.no{background:var(--no)}
-  .compat-body{padding:16px;display:flex;flex-direction:column;gap:14px}
-  .compat-info{display:flex;align-items:center;gap:12px}
-  .compat-icon{width:40px;height:40px;object-fit:contain}
-  .compat-model{font-weight:600}
-  .compat-change{color:var(--azul);font-size:.9rem}
-  .compat-btn{align-self:flex-start;text-align:center;width:100%;justify-content:center}
-  .hidden{display:none}
+    /* Galería */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+    .g-item{border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;background:#1b202a}
+    .g-item img{width:100%;height:100%;object-fit:cover;display:block}
 
-  /* ======= PRECIO ======= */
-  .price-card{display:grid;gap:18px;grid-template-columns:1fr 280px;background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px}
-  @media (max-width:900px){ .price-card{grid-template-columns:1fr} }
-  .price-amount{display:flex;align-items:flex-end;gap:6px}
-  .price-amount .currency{opacity:.8;font-size:1.6rem;line-height:1}
-  .price-amount .value{font-size:3rem;font-weight:800;line-height:1}
-  .price-amount .suffix{opacity:.6;font-weight:600;margin-left:4px}
-  .price-bullets{margin:14px 0 0 0;padding-left:18px;color:var(--texto-sec)}
-  .price-bullets li{margin:6px 0}
-  .price-right{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
-  .price-right .footnote{color:var(--texto-sec);display:block;margin-top:6px}
+    /* Clientes */
+    .clientes{background:var(--panel); color:var(--text); text-align:center; padding:80px 0}
+    .clientes h2{color:var(--primary); font-size: clamp(22px, 4vw, 32px); margin-bottom: 12px}
+    .clientes p{color:var(--muted); max-width: 700px; margin: 0 auto 50px}
+    .clientes-grid{display:flex; flex-wrap:wrap; justify-content:center; gap:30px}
+    .cliente-card{background:#1b202a; border-radius:16px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,.25); max-width:350px; flex:1 1 300px; text-align:center; transition:transform .3s ease, box-shadow .3s ease; opacity:0; transform: translateY(24px)}
+    .cliente-card:hover{transform:translateY(-5px)}
+    .cliente-card.in-view{opacity:1; transform: translateY(0); transition: opacity .7s ease, transform .7s ease}
+    .cliente-card img{width:100%; height:350px; object-fit:cover; border-radius:12px; margin-bottom:16px}
+    .cliente-card h3{font-size:1.05em; font-weight:600; color:#fff; margin:0}
 
-  /* ======= REVEAL ======= */
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease}
-  .reveal.visible{opacity:1;transform:translateY(0)}
-</style>
+    /* Precio */
+    .pricing{background:linear-gradient(135deg, var(--primary), var(--primary-2)); color:#fff}
+    .price-wrap{max-width:860px; margin:0 auto; padding:6px 0}
+    .price-card{background:#fff; color:#1c2330; border-radius:18px; padding:22px; display:grid; gap:18px; grid-template-columns:1fr 280px}
+    @media (max-width:900px){ .price-card{grid-template-columns:1fr} }
+    .price-amount{display:flex; align-items:flex-end; gap:6px}
+    .price-amount .currency{opacity:.8; font-size:1.6rem; line-height:1}
+    .price-amount .value{font-size:3rem; font-weight:800; line-height:1}
+    .price-amount .suffix{opacity:.6; font-weight:600; margin-left:4px}
+    .price-bullets{margin:14px 0 0 0; padding-left:18px; color:#445}
+    .price-right{display:flex; flex-direction:column; gap:10px; align-items:flex-start}
+    .note{margin-top:10px; text-align:center; opacity:.95}
+
+    /* Compatibilidad (solo buscador + tarjeta) */
+    .compat-wrap{max-width:900px;margin:0 auto}
+    .filters{display:block;margin-bottom:16px}
+    #q-model{width:100%;background:#1b202a;color:var(--text);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px}
+    .compat-card{border-radius:14px;border:1px solid rgba(255,255,255,.08);overflow:hidden;max-width:900px;background:#1b202a;display:flex;flex-direction:column;margin:14px 0}
+    .compat-header{padding:10px 16px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
+    .compat-header.ok{background:#27ae60}
+    .compat-header.no{background:#c0392b}
+    .compat-body{padding:16px;display:flex;flex-direction:column;gap:14px}
+    .compat-info{display:flex;align-items:center;gap:12px}
+    .compat-icon{width:40px;height:40px;object-fit:contain}
+    .compat-model{font-weight:600}
+    .compat-btn{align-self:flex-start;text-align:center;justify-content:center}
+    .assist{color:var(--muted);font-size:.95rem;margin-top:8px}
+
+    /* ----------- FOOTER NUEVO ----------- */
+    .site-footer{
+      background:var(--panel-2);
+      position:relative;
+      padding-top:64px;
+      padding-bottom:0;
+      margin-top:64px;
+      border-top:1px solid rgba(255,255,255,.06); /* "corte" de arranque */
+    }
+    /* bloque superior */
+    .f-top{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr .9fr 1.2fr;gap:36px;align-items:start;padding:0 24px 48px}
+    .f-brand img{height:44px}
+    .f-brand p{color:var(--muted); margin:12px 0 18px}
+    .socials{display:flex;gap:12px}
+    .socials a{
+      width:36px;height:36px;border-radius:10px;background:#141820;border:1px solid rgba(255,255,255,.08);
+      display:inline-flex;align-items:center;justify-content:center;color:#fff;opacity:.9
+    }
+    .socials a:hover{background:#1b2230}
+
+    .f-links{padding-left:36px;border-left:1px solid rgba(255,255,255,.08)} /* divisor vertical */
+    .f-links h4{margin:0 0 12px;font-size:1rem}
+    .f-links ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    .f-links a{color:var(--muted)}
+    .f-links a:hover{color:#fff}
+
+    .f-map iframe{
+      width:100%;min-height:220px;border:0;border-radius:12px;filter:grayscale(.1) contrast(1.05) brightness(.95)
+    }
+    .f-cta{margin-top:14px}
+
+    /* barra inferior */
+    .f-bottom{
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:8px;
+      padding:18px 24px calc(18px + var(--safe-bottom));
+      color:#9aa3af;
+      display:flex;justify-content:center
+    }
+
+    @media (max-width:1024px){
+      .f-top{grid-template-columns:1fr 1fr;gap:28px}
+      .f-map{grid-column:1 / -1}
+      .f-links{border-left:0;padding-left:0;border-top:1px solid rgba(255,255,255,.08);padding-top:18px}
+    }
+    @media (max-width:640px){
+      .f-top{grid-template-columns:1fr;gap:22px}
+      .f-links{border:0;padding:0;border-top:1px solid rgba(255,255,255,.08);padding-top:16px}
+    }
+
+    .btn:focus-visible{outline:2px solid #fff; outline-offset:2px}
+    @media (prefers-reduced-motion: reduce){*{transition:none!important; animation:none!important}}
+  </style>
 </head>
 <body>
 
-<header>
+  <!-- NAV -->
   <nav class="nav">
-    <div class="brand"><img src="./img/logo-ergo.png" alt="ErgoRide">ErgoRide</div>
-    <div class="spacer"></div>
-    <a href="#precio" class="btn btn-ghost">Precio</a>
-    <a href="#compatibilidad" class="btn btn-ghost">Compatibilidad</a>
-    <a href="#contacto" class="btn btn-primary">Contacto</a>
+    <div class="wrap">
+      <a class="brand" href="#inicio">
+        <img src="imagen_2025-08-05_195149555.png" alt="ErgoRide">
+      </a>
+      <div class="navlinks">
+        <a href="#porque">¿Por qué ErgoRide?</a>
+        <a href="#producto">Producto</a>
+        <a href="#precio">Precio</a>
+        <a class="btn-small" href="#contacto">Contacto</a>
+      </div>
+    </div>
   </nav>
-</header>
 
-<!-- HERO -->
-<section class="hero section reveal" id="inicio">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">Ergonomía aplicada al motociclismo</div>
-      <h1 class="h1">Confort, seguridad y diseño en cada recorrido.</h1>
-      <p class="lead">Descubrí <strong>ErgoRide</strong>, el asiento ergonómico con soporte lumbar que mejora tu postura, reduce la fatiga y transforma cada viaje en una experiencia más cómoda y segura.</p>
-      <div class="cta">
-        <a href="#comprar" class="btn btn-primary">Quiero mi ErgoRide</a>
-        <a href="#como-funciona" class="btn btn-ghost">Ver cómo funciona</a>
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="container content">
+      <div class="kicker">Ergonomía aplicada al motociclismo</div>
+      <h1>Confort, seguridad y diseño<br>en cada recorrido.</h1>
+      <p>Descubrí <strong>ErgoRide</strong>, el asiento ergonómico con soporte lumbar que mejora tu postura, reduce la fatiga y transforma cada viaje en una experiencia más cómoda y segura.</p>
+      <div class="cta-row">
+        <a href="#precio" class="btn primary">Quiero comprar</a>
+        <a href="#producto" class="btn secondary">Ver cómo funciona</a>
       </div>
     </div>
-    <div><img class="hero-img" src="./img/hero-asiento.jpg" alt="ErgoRide instalado en moto" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
-  </div>
-</section>
+  </section>
 
-<!-- CARACTERÍSTICAS -->
-<section id="caracteristicas" class="section reveal">
-  <div class="container">
-    <h2 class="section-title">Características principales</h2>
-    <p class="section-sub">Diseñado por ingenieros para mejorar tu postura y reducir la fatiga sin modificar tu moto.</p>
-
-    <div class="features-grid">
-      <article class="feat">
-        <img src="./img/icons/ergonomia.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
-        <h3>Ergonomía real</h3>
-        <p>Soporte lumbar que distribuye mejor el peso y mantiene una postura saludable.</p>
-      </article>
-
-      <article class="feat">
-        <img src="./img/icons/clock.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
-        <h3>Instalación rápida</h3>
-        <p>Se coloca y retira en minutos con anclaje seguro. No requiere modificaciones.</p>
-      </article>
-
-      <article class="feat">
-        <img src="./img/icons/tool.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
-        <h3>Sistema desmontable</h3>
-        <p>Usalo cuando lo necesitás. Mantiene la estética y funcionalidad de la moto.</p>
-      </article>
-
-      <article class="feat">
-        <img src="./img/icons/shield.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
-        <h3>Materiales resistentes</h3>
-        <p>Espuma HR, cobertura durable y base plástica inyectada de alta calidad.</p>
-      </article>
-
-      <article class="feat">
-        <img src="./img/icons/road.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
-        <h3>Comfort urbano y ruta</h3>
-        <p>Reduce la fatiga tanto en trayectos cortos diarios como en viajes largos.</p>
-      </article>
-
-      <article class="feat">
-        <img src="./img/icons/warranty.svg" class="feat-ico" alt="" onerror="this.onerror=null;this.src='./img/icons/fallback.svg';">
-        <h3>Garantía 6 meses</h3>
-        <p>Cobertura por defectos de fabricación y soporte postventa.</p>
-      </article>
+  <!-- ¿POR QUÉ ERGORIDE? -->
+  <section id="porque" class="section">
+    <h2 class="section-title">¿Por qué ErgoRide?</h2>
+    <p class="lead">ErgoRide reduce la carga en la zona lumbar, mejora la postura y te permite viajar más tiempo sin fatiga.</p>
+    <div class="container grid three">
+      <div class="card">
+        <strong>Soporte lumbar real</strong>
+        <p>Distribución del peso y apoyo en la curva natural de la espalda.</p>
+      </div>
+      <div class="card">
+        <strong>Instalación en minutos</strong>
+        <p>Anclaje seguro y desmontable, sin modificar tu moto.</p>
+      </div>
+      <div class="card">
+        <strong>Materiales resistentes</strong>
+        <p>Espumas de alta densidad y base plástica inyectada.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ERGORIDE EN ACCIÓN -->
-<section id="como-funciona" class="section alt reveal">
-  <div class="container">
+  <!-- PRODUCTO / GALERÍA -->
+  <section id="producto" class="section dark">
     <h2 class="section-title">ErgoRide en acción</h2>
-    <p class="section-sub">Imágenes reales del asiento instalado. Se monta y desmonta en minutos.</p>
-
-    <div class="gallery">
-      <div class="g-item"><img src="./img/accion/1.jpg" alt="ErgoRide en Honda Wave" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
-      <div class="g-item"><img src="./img/accion/2.jpg" alt="Detalle de soporte lumbar" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
-      <div class="g-item"><img src="./img/accion/3.jpg" alt="Vista lateral instalada" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
-      <div class="g-item"><img src="./img/accion/4.jpg" alt="Ajuste y anclaje" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
-      <div class="g-item"><img src="./img/accion/5.jpg" alt="Test en ruta" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
-      <div class="g-item"><img src="./img/accion/6.jpg" alt="ErgoRide detalle" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.jpg';"></div>
+    <p class="lead">Imágenes reales del asiento instalado. Se monta y desmonta en minutos.</p>
+    <div class="container gallery">
+      <div class="g-item"><img src="Imagen4.png" loading="lazy" decoding="async" alt="Render del asiento ErgoRide"></div>
+      <div class="g-item"><img src="Imagen5.png" loading="lazy" decoding="async" alt="ErgoRide instalado en moto"></div>
+      <div class="g-item"><img src="cliente.jpg" loading="lazy" decoding="async" alt="Usuario con moto y ErgoRide"></div>
+      <div class="g-item"><img src="cliente%202.jpg" loading="lazy" decoding="async" alt="Usuario mostrando ErgoRide instalado"></div>
+      <div class="g-item"><img src="Imagen4.png" loading="lazy" decoding="async" alt="Detalle ErgoRide"></div>
+      <div class="g-item"><img src="Imagen5.png" loading="lazy" decoding="async" alt="Detalle ErgoRide en moto"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- TESTIMONIOS -->
-<section id="testimonios" class="section reveal">
-  <div class="container">
-    <h2 class="section-title">Experiencias de quienes ya usan ErgoRide</h2>
-    <div class="testimonials">
-      <button class="t-btn prev" aria-label="Anterior">‹</button>
-      <div class="t-track">
-        <article class="t-card">
-          <div class="t-stars" aria-label="5 estrellas">★★★★★</div>
-          <p>“Hago repartos 8 horas por día. Con ErgoRide dejé de llegar con dolor lumbar y mejoró mi postura.”</p>
-          <div class="t-user"><img src="./img/users/lucas.png" alt="" onerror="this.onerror=null;this.src='./img/placeholder-user.png';"><div><strong>Lucas M.</strong><br><small>Repartidor, CABA</small></div></div>
-        </article>
-        <article class="t-card">
-          <div class="t-stars" aria-label="5 estrellas">★★★★★</div>
-          <p>“Viajo 40 km diarios. La espalda deja de cargar todo el peso. Instalación rápida.”</p>
-          <div class="t-user"><img src="./img/users/sofia.png" alt="" onerror="this.onerror=null;this.src='./img/placeholder-user.png';"><div><strong>Sofía R.</strong><br><small>Zona Norte</small></div></div>
-        </article>
-        <article class="t-card">
-          <div class="t-stars" aria-label="5 estrellas">★★★★★</div>
-          <p>“Antes paraba cada 30 min por molestias. Ahora hago tramos largos sin dolor.”</p>
-          <div class="t-user"><img src="./img/users/martin.png" alt="" onerror="this.onerror=null;this.src='./img/placeholder-user.png';"><div><strong>Martín A.</strong><br><small>La Plata</small></div></div>
-        </article>
-        <article class="t-card">
-          <div class="t-stars" aria-label="5 estrellas">★★★★★</div>
-          <p>“Relación precio/beneficio excelente. Más estable al frenar.”</p>
-          <div class="t-user"><img src="./img/users/daiana.png" alt="" onerror="this.onerror=null;this.src='./img/placeholder-user.png';"><div><strong>Daiana P.</strong><br><small>Rosario</small></div></div>
-        </article>
-      </div>
-      <button class="t-btn next" aria-label="Siguiente">›</button>
-    </div>
-  </div>
-</section>
-
-<!-- PRECIO -->
-<section id="precio" class="section alt reveal">
-  <div class="container">
-    <h2 class="section-title">Precio</h2>
-    <p class="section-sub">Incluye respaldo ergonómico, kit de fijación y guía de instalación.</p>
-    <div class="price-card">
-      <div>
-        <div class="price-amount">
-          <span class="currency">$</span><span class="value">149.990</span><span class="suffix">ARS</span>
+  <!-- TESTIMONIOS VISUALES -->
+  <section class="clientes">
+    <div class="container">
+      <h2>Experiencias de quienes ya usan ErgoRide</h2>
+      <p>Historias reales de usuarios que hoy viajan con más confort y menos dolor.</p>
+      <div class="clientes-grid">
+        <div class="cliente-card reveal">
+          <img src="cliente.jpg" alt="Usuario con ErgoRide en ciudad">
+          <h3>“Dejé de llegar con dolor lumbar en recorridos largos.”</h3>
         </div>
-        <ul class="price-bullets">
-          <li>Soporte lumbar de alta densidad</li>
-          <li>Instalación en minutos</li>
-          <li>Garantía 6 meses</li>
-        </ul>
-      </div>
-      <div class="price-right">
-        <a href="https://wa.me/5491100000000" target="_blank" rel="noopener" class="btn btn-primary">Comprar ahora</a>
-        <a href="#contacto" class="btn btn-ghost">Consultar por mi modelo</a>
-        <small class="footnote">Precio final con IVA. Promos bancarias y envío a consultar.</small>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COMPATIBILIDAD -->
-<section id="compatibilidad" class="section reveal">
-  <div class="container">
-    <h2 class="section-title">¿Tu moto es compatible?</h2>
-    <p class="section-sub">ErgoRide se instala en minutos con anclaje seguro. Si tu modelo no está en la lista, escribinos y te asesoramos.</p>
-
-    <div class="filters">
-      <input id="q-model" type="search" placeholder="Buscar modelo o marca… (ej. Wave, Motomel)">
-      <div class="chips">
-        <button class="chip is-active" data-filter="all">Todos</button>
-        <button class="chip" data-filter="110">110 cc</button>
-        <button class="chip" data-filter="150">150 cc</button>
-        <button class="chip" data-filter="200">200 cc</button>
-      </div>
-    </div>
-
-    <!-- Tarjeta resultado de compatibilidad -->
-    <div id="compat-box" class="compat-card hidden">
-      <div class="compat-header ok" id="compat-header">
-        <strong id="compat-status">Compatible con tu vehículo</strong>
-      </div>
-      <div class="compat-body">
-        <div class="compat-info">
-          <img src="./img/icons/moto.png" alt="Moto" class="compat-icon" onerror="this.onerror=null;this.src='./img/placeholder-icon.png';">
-          <div>
-            <div id="compat-model" class="compat-model">Honda Wave 110</div>
-            <a href="#compatibilidad" class="compat-change">Cambiar vehículo</a>
-          </div>
+        <div class="cliente-card reveal">
+          <img src="cliente%202.jpg" alt="Usuario con ErgoRide estacionado">
+          <h3>“Se instala rápido y la postura mejora enseguida.”</h3>
         </div>
-        <a href="#precio" class="btn btn-primary compat-btn">Ver productos compatibles</a>
       </div>
     </div>
+  </section>
 
-    <ul id="models-grid" class="models-grid"></ul>
-
-    <p class="compat-note">
-      <span class="dot ok"></span> Instalación directa •
-      <span class="dot maybe"></span> Puede requerir ajuste menor según año/versión
-    </p>
-  </div>
-</section>
-
-<!-- CONTACTO -->
-<section id="contacto" class="section alt reveal">
-  <div class="container">
-    <h2 class="section-title">¿Listx para mejorar tu postura?</h2>
-    <p class="section-sub">Hablemos por WhatsApp o dejános tu mail y te asesoramos con la instalación.</p>
-    <div class="cta">
-      <a class="btn btn-primary" href="https://wa.me/5491100000000" target="_blank" rel="noopener">Escribime por WhatsApp</a>
-      <a class="btn btn-ghost" href="mailto:hola@ergoride.com">Enviar un correo</a>
-    </div>
-  </div>
-</section>
-
-<script>
-  // ===== Scroll reveal
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); }});
-  },{ rootMargin: "0px 0px -10% 0px", threshold: .12 });
-  document.querySelectorAll('.reveal').forEach(sec => observer.observe(sec));
-
-  // ===== Testimonials slider
-  (function(){
-    const track = document.querySelector('.t-track');
-    if(!track) return;
-    let index = 0;
-    const prev = document.querySelector('.t-btn.prev');
-    const next = document.querySelector('.t-btn.next');
-    function slideTo(i){
-      const total = track.children.length;
-      index = (i+total) % total;
-      track.style.transform = `translateX(-${index*100}%)`;
-      track.style.transition = 'transform .45s ease';
-    }
-    prev.addEventListener('click', ()=> slideTo(index-1));
-    next.addEventListener('click', ()=> slideTo(index+1));
-    setInterval(()=> slideTo(index+1), 5000);
-  })();
-
-  // ===== DATA de modelos
-  const ERGORIDE_MODELS = [
-    {brand:"Honda",   model:"Wave 110",        cc:110, fit:"ok"},
-    {brand:"Honda",   model:"Wave 110 S",      cc:110, fit:"ok"},
-    {brand:"Honda",   model:"XR150L",          cc:150, fit:"maybe"},
-
-    {brand:"Motomel", model:"B110",            cc:110, fit:"ok"},
-    {brand:"Motomel", model:"S2 150",          cc:150, fit:"ok"},
-    {brand:"Motomel", model:"CX 150",          cc:150, fit:"maybe"},
-
-    {brand:"Gilera",  model:"Smash",           cc:110, fit:"ok"},
-
-    {brand:"Keller",  model:"KN110-8",         cc:110, fit:"ok"},
-
-    {brand:"Corven",  model:"Energy 110",      cc:110, fit:"ok"},
-    {brand:"Corven",  model:"Energy 110 by Corven", cc:110, fit:"ok"},
-    {brand:"Corven",  model:"Mirage 110",      cc:110, fit:"maybe"},
-
-    {brand:"Guerrero",model:"G110 Trip",       cc:110, fit:"ok"},
-
-    {brand:"Zanella", model:"ZB 110",          cc:110, fit:"ok"},
-    {brand:"Zanella", model:"ZB 110 RT",       cc:110, fit:"ok"},
-
-    {brand:"Bajaj",   model:"Rouser 200",      cc:200, fit:"maybe"},
-  ];
-
-  // ===== Render + búsqueda + filtros + tarjeta (compatible/no)
-  const listEl   = document.getElementById('models-grid');
-  const inputEl  = document.getElementById('q-model');
-  const chips    = Array.from(document.querySelectorAll('.chip'));
-
-  const compatBox    = document.getElementById('compat-box');
-  const compatHeader = document.getElementById('compat-header');
-  const compatStatus = document.getElementById('compat-status');
-  const compatModel  = document.getElementById('compat-model');
-
-  const FIT_LABEL = { ok: "Listo", maybe: "Ajuste menor" };
-
-  let state = { text:'', cc:'all' };
-  function norm(s){ return s.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase(); }
-
-  function renderList(){
-    const txt = norm(state.text);
-    const filtered = ERGORIDE_MODELS.filter(m=>{
-      const matchTxt = !txt || norm(m.brand+' '+m.model).includes(txt);
-      const matchCc  = state.cc === 'all' || String(m.cc) === String(state.cc);
-      return matchTxt && matchCc;
-    });
-
-    listEl.innerHTML = filtered.map((m,idx)=>`
-      <li data-idx="${idx}">
+  <!-- PRECIO -->
+  <section id="precio" class="section pricing">
+    <div class="container price-wrap">
+      <h2 class="section-title">Precio</h2>
+      <div class="price-card">
         <div>
-          <div><strong>${m.brand}</strong></div>
-          <div class="mm">${m.model} · ${m.cc} cc</div>
+          <div class="price-amount">
+            <span class="currency">$</span><span class="value">63.250</span><span class="suffix">ARS</span>
+          </div>
+          <ul class="price-bullets">
+            <li>Soporte lumbar de alta densidad</li>
+            <li>Instalación en minutos</li>
+            <li>Garantía 6 meses</li>
+          </ul>
         </div>
-        <span class="badge ${m.fit}">${FIT_LABEL[m.fit]}</span>
-      </li>
-    `).join('') || `<li><div>No encontramos ese modelo. Probá otra búsqueda.</div></li>`;
+        <div class="price-right">
+          <a href="https://wa.me/5491100000000" class="btn primary" target="_blank" rel="noopener">Comprar ahora</a>
+          <a href="#compatibilidad" class="btn secondary">Ver compatibilidad</a>
+        </div>
+      </div>
+      <p class="note">Precio final con IVA. Promos bancarias y envío a consultar.</p>
+    </div>
+  </section>
 
-    Array.from(listEl.querySelectorAll('li[data-idx]')).forEach((li,i)=>{
-      li.addEventListener('click', ()=> showCard(filtered[i]));
-    });
+  <!-- COMPATIBILIDAD (solo buscador + tarjeta) -->
+  <section id="compatibilidad" class="section">
+    <h2 class="section-title">¿Tu moto es compatible?</h2>
+    <p class="lead">Escribí la marca o el modelo. Te mostramos si es compatible.</p>
 
-    updateCardFromSearch(txt, filtered);
-  }
+    <div class="container compat-wrap">
+      <div class="filters">
+        <input id="q-model" type="search" placeholder="Buscar modelo o marca… (ej. Wave, Motomel)">
+      </div>
 
-  function showCard(modelObj, queriedText){
-    const isCompatible = !!modelObj;
-    compatHeader.className = 'compat-header ' + (isCompatible ? 'ok' : 'no');
-    compatStatus.textContent = isCompatible ? 'Compatible con tu vehículo' : 'No es compatible con tu vehículo';
-    compatModel.textContent  = isCompatible ? `${modelObj.brand} ${modelObj.model}` : (queriedText || inputEl.value || 'Modelo no encontrado');
-    compatBox.classList.remove('hidden');
-  }
+      <!-- Tarjeta Compatible / No compatible -->
+      <div id="compat-box" class="compat-card hidden" aria-live="polite">
+        <div class="compat-header ok" id="compat-header">
+          <strong id="compat-status">Compatible con tu vehículo</strong>
+        </div>
+        <div class="compat-body">
+          <div class="compat-info">
+            <img src="imagen_2025-08-05_195149555.png" alt="" class="compat-icon">
+            <div>
+              <div id="compat-model" class="compat-model">Honda Wave 110</div>
+            </div>
+          </div>
+          <a href="#precio" class="btn primary compat-btn">Ver productos compatibles</a>
+          <div class="assist">¿No aparece tu modelo? Escribinos por WhatsApp y te ayudamos.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  function updateCardFromSearch(txt, filtered){
-    if(!inputEl.value.trim()){ compatBox.classList.add('hidden'); return; }
-    if(filtered.length>0){
-      showCard(filtered[0]);
-    }else{
-      showCard(null, inputEl.value.trim());
+  <!-- FOOTER NUEVO -->
+  <footer id="contacto" class="site-footer">
+    <div class="f-top">
+      <!-- Marca + redes -->
+      <div class="f-brand">
+        <img src="imagen_2025-08-05_195149555.png" alt="ErgoRide">
+        <p>Asiento ergonómico con soporte lumbar para que disfrutes cada kilómetro con más confort y menos fatiga.</p>
+        <div class="socials">
+          <!-- e-mail -->
+          <a href="mailto:hola@ergoride.com" aria-label="Email" title="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="#fff" opacity=".9"/><path d="M4 7l8 6 8-6" stroke="#fff"/></svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/5491100000000" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-4.3-7.1" stroke="#fff"/><path d="M8.5 20 7 22l2.5-.5" stroke="#fff"/><path d="M14.8 13.6c-1 .6-2.8-.3-4.1-1.6S8.1 9 8.7 8c.2-.4.7-.4 1 0l.9 1c.2.2.2.6 0 .8l-.4.7c.5.8 1.3 1.7 2.1 2.1l.7-.4c.2-.2.6-.2.8 0l1 1c.4.2.4.7 0 1z" stroke="#fff"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" aria-label="Instagram" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#fff"/><circle cx="12" cy="12" r="4" stroke="#fff"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#" aria-label="Facebook" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V6h-3a3 3 0 0 0-3 3v3H8v3h3v6h3v-6h2.5l.5-3H14V9z" fill="#fff"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="#" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.5 8.5v9" stroke="#fff" stroke-width="1.6"/><circle cx="6.5" cy="5.5" r="1.5" fill="#fff"/><path d="M10.5 17.5v-5a3 3 0 0 1 6 0v5" stroke="#fff" stroke-width="1.6"/><path d="M10.5 13.5h6" stroke="#fff" stroke-width="1.6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Enlaces -->
+      <div class="f-links">
+        <h4>Compañía</h4>
+        <ul>
+          <li><a href="#porque">¿Por qué ErgoRide?</a></li>
+          <li><a href="#producto">Producto</a></li>
+          <li><a href="#compatibilidad">Compatibilidad</a></li>
+          <li><a href="#precio">Precio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="f-cta" style="margin-top:16px">
+          <a class="btn primary" href="#precio">Quiero comprar</a>
+        </div>
+      </div>
+
+      <!-- Mapa -->
+      <div class="f-map">
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.324012!2d-58.378!3d-34.603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z34.603,-58.381!5e0!3m2!1ses-419!2sar!4v1700000000000"
+          allowfullscreen
+          aria-label="Mapa de ubicación">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- barra inferior -->
+    <div class="f-bottom">
+      <div>&copy; 2024 ErgoRide — Todos los derechos reservados · <a href="#" style="color:#cbd5e1;text-decoration:underline">Términos y condiciones</a></div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Animación on-scroll (reveal)
+    const els = document.querySelectorAll('.reveal, .cliente-card');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target);} });
+    }, {threshold: 0.15});
+    els.forEach(el => io.observe(el));
+
+    // DATA de modelos (puedes agregar más)
+    const ERGORIDE_MODELS = [
+      {brand:"Honda",   model:"Wave 110",        fit:"ok"},
+      {brand:"Honda",   model:"Wave 110 S",      fit:"ok"},
+      {brand:"Motomel", model:"B110",            fit:"ok"},
+      {brand:"Gilera",  model:"Smash",           fit:"ok"},
+      {brand:"Keller",  model:"KN110-8",         fit:"ok"},
+      {brand:"Corven",  model:"Energy 110",      fit:"ok"},
+      {brand:"Zanella", model:"ZB 110",          fit:"ok"},
+      {brand:"Guerrero",model:"G110 Trip",       fit:"ok"},
+      {brand:"Honda",   model:"XR150L",          fit:"maybe"},
+      {brand:"Motomel", model:"S2 150",          fit:"ok"},
+      {brand:"Zanella", model:"ZB 110 RT",       fit:"ok"},
+      {brand:"Corven",  model:"Mirage 110",      fit:"maybe"},
+      {brand:"Bajaj",   model:"Rouser 200",      fit:"maybe"},
+    ];
+
+    // Compatibilidad (solo buscador + tarjeta)
+    const inputEl = document.getElementById('q-model');
+    const compatBox = document.getElementById('compat-box');
+    const compatHeader = document.getElementById('compat-header');
+    theCompatStatus = document.getElementById('compat-status');
+    const compatModel = document.getElementById('compat-model');
+
+    const norm = s => s.normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
+    function buscarModelo(q){
+      const txt = norm(q);
+      if(!txt) return null;
+      return ERGORIDE_MODELS.find(m => norm(m.brand+' '+m.model).includes(txt)) || null;
     }
-  }
-
-  inputEl.addEventListener('input', e=>{ state.text = e.target.value; renderList(); });
-  chips.forEach(c=> c.addEventListener('click', ()=>{
-    chips.forEach(x=>x.classList.remove('is-active'));
-    c.classList.add('is-active');
-    state.cc = c.dataset.filter; renderList();
-  }));
-
-  renderList();
-</script>
+    function mostrarResultado(modelo, consulta){
+      compatBox.classList.remove('hidden');
+      if(modelo){
+        compatHeader.className = 'compat-header ok';
+        compatStatus.textContent = 'Compatible con tu vehículo';
+        compatModel.textContent  = `${modelo.brand} ${modelo.model}`;
+      }else{
+        compatHeader.className = 'compat-header no';
+        compatStatus.textContent = 'No encontramos ese modelo';
+        compatModel.textContent  = consulta || 'Ingresá marca o modelo';
+      }
+    }
+    function onInput(){
+      const q = inputEl.value.trim();
+      if(!q){ compatBox.classList.add('hidden'); return; }
+      const m = buscarModelo(q);
+      mostrarResultado(m, q);
+    }
+    inputEl.addEventListener('input', onInput);
+  </script>
 </body>
 </html>
