@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>ErgoRide – Confort ergonómico para tu moto</title>
-
   <meta name="description" content="ErgoRide: asiento ergonómico con soporte lumbar para motos. Menos fatiga, mejor postura y más confort.">
   <meta property="og:title" content="ErgoRide – Confort ergonómico para tu moto">
   <meta property="og:description" content="Soporte lumbar, menor fatiga y mejor postura.">
   <meta name="theme-color" content="#e02a3c">
-
+  <!-- VISUALIZADOR 3D -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     :root{
       --bg:#0f1217; --panel:#171b23; --text:#eef2f7; --muted:#aeb6c4;
@@ -200,9 +200,17 @@
   <!-- PRODUCTO -->
   <section id="producto" class="section dark">
     <h2 class="section-title reveal">ErgoRide en acción</h2>
-    <p class="lead reveal">Imágenes reales del asiento instalado. Se monta y desmonta en minutos.</p>
-
+    <p class="lead reveal">Imágenes reales del asiento instalado y modelo 3D interactivo. Podés girar el producto con el mouse o el dedo.</p>
     <div class="container gallery3">
+      <!-- Modelo 3D interactivo -->
+      <model-viewer 
+        src="Ensamblaje4.glb" 
+        alt="Modelo 3D del asiento ErgoRide" 
+        camera-controls 
+        auto-rotate 
+        style="width:100%;max-width:600px;height:400px;background:#222;border-radius:12px;margin:24px auto;display:block;">
+      </model-viewer>
+      <!-- Imágenes existentes -->
       <figure class="g-card reveal"><img src="Imagen4.png" alt="Render del asiento ErgoRide"></figure>
       <figure class="g-card reveal"><img src="Imagen5.png" alt="ErgoRide instalado – vista 1"></figure>
       <figure class="g-card reveal"><img src="moto-ergo-ride.png.png" alt="ErgoRide sobre Honda Wave 110"></figure>
@@ -319,7 +327,7 @@
       <div class="f-col reveal">
         <h5>Encontranos</h5>
         <iframe class="map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.780935470601!2d-58.440!3d-34.559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBuenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.780935470601!2d-58.440!3d-34.559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBuenos%20Aires!5e0!3m2!1ses-419[...]"
           allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación"></iframe>
       </div>
     </div>
