@@ -7,13 +7,15 @@
   <meta name="description" content="ErgoRide: asiento ergonómico con soporte lumbar para motos. Menos fatiga, mejor postura y más confort.">
   <meta property="og:title" content="ErgoRide – Confort ergonómico para tu moto">
   <meta property="og:description" content="Soporte lumbar, menor fatiga y mejor postura.">
-  <meta name="theme-color" content="#e02a3c">
+  <meta name="theme-color" content="#27ae60"> <!-- CAMBIADO A VERDE AMIGABLE -->
   <!-- VISUALIZADOR 3D -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     :root{
       --bg:#0f1217; --panel:#171b23; --text:#eef2f7; --muted:#aeb6c4;
-      --primary:#e02a3c; --primary-2:#b32130; --light:#f7f8fa;
+      --primary:#27ae60; /* CAMBIADO A VERDE AMIGABLE */
+      --primary-2:#219150; /* TONO MÁS OSCURO DEL VERDE */
+      --light:#f7f8fa;
       --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
       --safe-left: env(safe-area-inset-left); --safe-right: env(safe-area-inset-right);
       --card:#1b202a; --line:rgba(255,255,255,.06);
@@ -112,7 +114,7 @@
     .t-quote{padding:18px;font-weight:700;text-align:left}
 
     /* PRECIO */
-    .pricing{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff}
+    .pricing{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff} /* APLICA EL NUEVO COLOR */
     .price-wrap{max-width:860px;margin:0 auto}
     .price-card{background:#fff;color:#1c2330;border-radius:18px;padding:22px;display:grid;gap:18px;grid-template-columns:1fr 280px}
     @media(max-width:900px){.price-card{grid-template-columns:1fr}}
@@ -169,6 +171,7 @@
         <a href="#producto">Producto</a>
         <a href="#precio">Precio</a>
         <a class="btn-small" href="#contacto">Contacto</a>
+        <a class="btn-small" href="#garantia">Garantía</a> <!-- NUEVO ENLACE -->
       </div>
     </div>
   </nav>
@@ -241,7 +244,7 @@
       <h2 class="section-title reveal">Precio</h2>
       <div class="price-card reveal">
         <div>
-          <div class="price-amount"><span class="currency">$</span><span class="value">63.250</span><span class="suffix">ARS</span></div>
+          <div class="price-amount"><span class="currency">$</span><span class="value">69.999</span><span class="suffix">ARS</span></div> <!-- PRECIO ACTUALIZADO -->
           <ul class="price-bullets">
             <li>Soporte lumbar de alta densidad</li>
             <li>Instalación en minutos</li>
@@ -295,6 +298,23 @@
     </div>
   </section>
 
+  <!-- SECCIÓN DE GARANTÍA (NUEVA) -->
+  <section id="garantia" class="section dark">
+    <div class="container">
+      <h2 class="section-title reveal">Garantía y Reclamos</h2>
+      <p class="lead reveal">En ErgoRide, tu satisfacción es nuestra prioridad. Te brindamos 6 meses de garantía sobre tu asiento ergonómico.</p>
+      <div class="card reveal" style="max-width:800px; margin:0 auto;">
+        <p>Si experimentas algún inconveniente con tu producto ErgoRide dentro del período de garantía, por favor, sigue estos pasos:</p>
+        <ol>
+          <li>Reúne tu comprobante de compra y cualquier foto o video que demuestre el problema.</li>
+          <li>Contáctanos a través de nuestro correo electrónico <a href="mailto:garantia@ergoride.com" style="color:var(--primary);">garantia@ergoride.com</a> o por WhatsApp al <a href="https://wa.me/5491100000000" target="_blank" rel="noopener" style="color:var(--primary);">+54 9 11 0000-0000</a>.</li>
+          <li>Nuestro equipo de soporte revisará tu caso y te brindará una solución a la brevedad.</li>
+        </ol>
+        <p>Para más detalles sobre nuestra política de garantía, puedes <a href="#" style="color:var(--primary);">consultar nuestros términos y condiciones.</a></p>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER (3 columnas) -->
   <footer id="contacto" class="footer">
     <div class="f-wrap">
@@ -318,6 +338,7 @@
           <a href="#producto">¿Cómo funciona?</a>
           <a href="#precio">Precio</a>
           <a href="#compatibilidad">Compatibilidad</a>
+          <a href="#garantia">Garantía y Reclamos</a> <!-- NUEVO ENLACE EN EL FOOTER -->
         </div>
         <div class="f-cta">
           <a class="btn primary" href="#precio">Quiero mi ErgoRide</a>
